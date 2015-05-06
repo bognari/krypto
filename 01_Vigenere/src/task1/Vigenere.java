@@ -50,7 +50,7 @@ public class Vigenere extends Cipher {
    */
   public void breakCipher(BufferedReader ciphertext, BufferedWriter cleartext) {
     Map<String, Integer> parts = new HashMap<>();
-    Map<Integer, Integer> teiler = new HashMap<>();
+    Map<Integer, Integer> primeFacs = new HashMap<>();
 
     StringBuilder builder = new StringBuilder();
     String aux = "";
@@ -64,9 +64,12 @@ public class Vigenere extends Cipher {
 
     String text = builder.toString();
 
-    System.out.printf("Testet bis i = %d%n", Math.max(6, text.length() / 1000));
+    int min = Math.min(text.length(), 3);
+    int max = Math.min(2000, Math.max(text.length() / 1000, Math.min(6, text.length())));
 
-    for (int i = 3; i < Math.max(6, text.length() / 1000); i++) {
+    System.out.printf("Testet von bis i = %d, %d%n", min , max);
+
+    for (int i = min; i < max; i++) {
       Pattern pattern = Pattern.compile(String.format("(?<teilwort>.{%d})(.*?)(\\k<teilwort>)", i));
       Matcher matcher = pattern.matcher(text);
 
@@ -82,10 +85,10 @@ public class Vigenere extends Cipher {
           }
 
           if (j > 1) {
-            if (teiler.containsKey(j)) {
-              teiler.replace(j, teiler.get(j) + 1);
+            if (primeFacs.containsKey(j)) {
+              primeFacs.replace(j, primeFacs.get(j) + 1);
             } else {
-              teiler.put(j, 1);
+              primeFacs.put(j, 1);
             }
           }
         }
@@ -94,13 +97,13 @@ public class Vigenere extends Cipher {
       }
     }
 
-    List<Map.Entry<Integer, Integer>> tlist = new ArrayList<>(teiler.entrySet());
+    List<Map.Entry<Integer, Integer>> tlist = new ArrayList<>(primeFacs.entrySet());
 
     Collections.sort(tlist, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
 
     System.out.println("Es wurden folgene mögliche Schlüssellängen gefunden. Wählen Sie eine aus.");
 
-    for (int i = 0; i < Math.min(20, tlist.size()); i++) {
+    for (int i = 0; i < Math.min(2000, tlist.size()); i++) {
       System.out.printf("%5d --- %5d%n", tlist.get(i).getKey(), tlist.get(i).getValue());
     }
 
@@ -127,6 +130,8 @@ public class Vigenere extends Cipher {
       String teiltext = stringBuilder.toString();
       shift.add(caesarKey(teiltext));
     }
+
+    System.out.printf("Key: %s%n", Arrays.toString(shift.toArray(new Integer[shift.size()])));
 
     System.out.println();
   }
