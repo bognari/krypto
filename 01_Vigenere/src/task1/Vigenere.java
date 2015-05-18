@@ -11,9 +11,7 @@
 
 package task1;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.SynchronousQueue;
@@ -69,11 +67,16 @@ public class Vigenere extends Cipher {
 
     System.out.printf("Testet von bis i = %d, %d%n", min , max);
 
-    for (int i = min; i < max; i++) {
-      Pattern pattern = Pattern.compile(String.format("(?<teilwort>.{%d})(.*?)(\\k<teilwort>)", i));
+    int start = 0;
+
+    //for (int i = min; i < max; i++) {
+      //Pattern pattern = Pattern.compile(String.format("(?<teilwort>.{%d})(.*?)(\\k<teilwort>)", i), Pattern.DOTALL | Pattern.UNICODE_CHARACTER_CLASS);
+    Pattern pattern = Pattern.compile("(?<teilwort>.{3,23})(.*?)(\\k<teilwort>)", Pattern.DOTALL);
       Matcher matcher = pattern.matcher(text);
 
-      while (matcher.find()) {
+      while (matcher.find(start)) {
+        start = matcher.end(1);
+        //System.out.println(start);
         int l = matcher.group(2).length() + matcher.group(1).length();
 
         List<List<Integer>> ps = powerset(getPrimeFactors(l));
@@ -94,7 +97,8 @@ public class Vigenere extends Cipher {
         }
 
         parts.put(matcher.group(1), l);
-      }
+        //System.out.printf("%10s --- %d%n", matcher.group(1), l);
+    //  }
     }
 
     List<Map.Entry<Integer, Integer>> tlist = new ArrayList<>(primeFacs.entrySet());
@@ -103,7 +107,7 @@ public class Vigenere extends Cipher {
 
     System.out.println("Es wurden folgene mögliche Schlüssellängen gefunden. Wählen Sie eine aus.");
 
-    for (int i = 0; i < Math.min(2000, tlist.size()); i++) {
+    for (int i = 0; i < Math.min(20, tlist.size()); i++) {
       System.out.printf("%5d --- %5d%n", tlist.get(i).getKey(), tlist.get(i).getValue());
     }
 
@@ -122,14 +126,61 @@ public class Vigenere extends Cipher {
       }
     } while (d < 1);
 
-    for (int i = 0; i < d; i++) {
+    int f = 0;
+
+    do {
+      System.out.print("Geben Sie eine Schlüssel Aufsplittung an (kann das Ergebnis verbessern): f = ");
+      try {
+        f = scanner.nextInt();
+      } catch (InputMismatchException e) {
+        scanner.next();
+        System.out.println("Das war keine Zahl, versuche es erneut");
+      }
+    } while (f < 1);
+
+    int dfac = d * f;
+    List<Integer> shiftfac = new ArrayList<>(dfac);
+    //List<String> teilstrings = new ArrayList<>(dfac);
+
+    for (int i = 0; i < dfac; i++) {
       StringBuilder stringBuilder = new StringBuilder();
-      for (int j = 0; j * d + i < text.length(); j++) {
-        stringBuilder.append(text.charAt(j * d + i));
+      for (int j = 0; j * dfac + i < text.length(); j++) {
+        stringBuilder.append(text.charAt(j * dfac + i));
       }
       String teiltext = stringBuilder.toString();
-      shift.add(caesarKey(teiltext));
+      PrintStream out = System.out;
+      try {
+        System.setOut(new PrintStream("bla"));
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+      shiftfac.add(caesarKey(teiltext));
+      System.setOut(out);
+      //teilstrings.add(teiltext);
     }
+
+    //List<List<Map.Entry<Integer, Integer>>> anzAll = new ArrayList<>(d);
+
+    for (int i = 0; i < d; i++) {
+      Map<Integer, Integer> anz = new HashMap<>(d);
+
+      for (int j = 0; j < f; j++) {
+        int n = shiftfac.get(j * d + i);
+        if (anz.containsKey(n)) {
+          anz.replace(n, anz.get(n) + 1);
+        } else {
+          anz.put(n, 1);
+        }
+      }
+
+      List<Map.Entry<Integer, Integer>> anzList = new ArrayList<>(anz.entrySet());
+
+      Collections.sort(anzList, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+
+      shift.add(anzList.get(0).getKey());
+      //anzAll.add(anzList);
+    }
+
 
     System.out.printf("Key: %s%n", Arrays.toString(shift.toArray(new Integer[shift.size()])));
 
