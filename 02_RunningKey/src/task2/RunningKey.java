@@ -13,6 +13,8 @@ package task2;
 
 import de.tubs.cs.iti.jcrypt.chiffre.CharacterMapping;
 import de.tubs.cs.iti.jcrypt.chiffre.Cipher;
+import de.tubs.cs.iti.jcrypt.chiffre.FrequencyTables;
+import de.tubs.cs.iti.jcrypt.chiffre.NGram;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,7 +25,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Dummy-Klasse für die Chiffre mit laufendem Schlüssel.
@@ -34,6 +37,17 @@ import java.util.StringTokenizer;
 public class RunningKey extends Cipher {
 
   Path key;
+
+    Map<String, NGram> uniGram;
+    Map<String, NGram> diGram;
+    Map<String, NGram> triGram;
+
+    int uniPrio = 1;
+    int diPrio = 10;
+    int triPrio = 100;
+
+    Map<Integer, Set<Map.Entry<Integer, Integer>>> combi = new HashMap<>(modulus);
+
 
   /**
    * Analysiert den durch den Reader <code>ciphertext</code> gegebenen
@@ -47,8 +61,244 @@ public class RunningKey extends Cipher {
    * Der Writer, der den Klartext schreiben soll.
    */
   public void breakCipher(BufferedReader ciphertext, BufferedWriter cleartext) {
+      key = Paths.get("key.txt");
 
+      uniGram = getNGramMap(FrequencyTables.getNGramsAsList(1, charMap));
+      diGram = getNGramMap(FrequencyTables.getNGramsAsList(2, charMap));
+      triGram = getNGramMap(FrequencyTables.getNGramsAsList(3, charMap));
+
+      StringBuilder builder = new StringBuilder();
+      String aux = "";
+      try {
+          while ((aux = ciphertext.readLine()) != null) {
+              builder.append(aux);
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+
+      String chipher = builder.toString();
+      StringBuilder klarText = new StringBuilder(chipher.length());
+      StringBuilder keyText = new StringBuilder(chipher.length());
+
+      int start = 0;
+      int end = 4;
+
+      Map<Character, List<RelationFrequency>> map = getRelationFreqencyMap();
+
+      Scanner cin = new Scanner(System.in);
+
+      System.out.println("Welche Stelle des Ciphertextes soll betrachtet werden?");
+      System.out.println("Waehle: 0-" + chipher.length());
+      try {
+          System.out.print("Start: ");
+          start = cin.nextInt();
+      } catch (Exception e) {
+          System.out.println("Falsche Eingabe, 0. Stelle wird ausgewaehlt!");
+      }
+      try {
+          System.out.print("Ende: ");
+          end = cin.nextInt();
+      } catch (Exception e) {
+          System.out.println("Falsche Eingabe, 4. Stelle wird ausgewaehlt!");
+      }
+
+      System.out.println("Wie soll die Gewichtung aussehen fuer Uni/Di/Tri Grams?");
+
+      try {
+          System.out.println("Gewichtung Unigram: 1-1000: ");
+          uniPrio = cin.nextInt();
+
+          System.out.println("Gewichtung Digram: 1-1000: ");
+          diPrio = cin.nextInt();
+
+          System.out.println("Gewichtung Trigram: 1-1000: ");
+          triPrio = cin.nextInt();
+      } catch (Exception e) {
+          System.out.println("Falsche Eingabe, 1 wird fuer die restlichen ausgewaehlt");
+      }
+
+      List<List<RelationFrequency>> komischeTabelle = new LinkedList<>();
+
+      for (int i = start; i < end; i++) {
+          komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 8));
+      }
+
+      List<RelationFrequencyCombi> relationFrequencyCombiList = getCombination(komischeTabelle.subList(0, end - start).toArray(new List[end - start]));
+
+
+      Collections.sort(relationFrequencyCombiList);
+      int a = 0;
   }
+
+    Map<String, NGram> getNGramMap(List<NGram> list) {
+        Map<String, NGram> ngrams = new LinkedHashMap<>();
+        for (NGram ngram : list) {
+            ngrams.put(ngram.getCharacters(), ngram);
+        }
+        return ngrams;
+    }
+
+    public List<RelationFrequency> getRelationFreqency(char c) {
+        List<RelationFrequency> list = new ArrayList<>(uniGram.size());
+        list.addAll(uniGram.keySet().stream().map(key -> new RelationFrequency(c, key.charAt(0))).collect(Collectors.toList()));
+        return list;
+    }
+
+    public Map<Character, List<RelationFrequency>> getRelationFreqencyMap() {
+        Map<Character, List<RelationFrequency>> map = new HashMap<>(uniGram.size());
+        for (String key : uniGram.keySet()) {
+            List<RelationFrequency> list = getRelationFreqency(key.charAt(0));
+            Collections.sort(list);
+            map.put(key.charAt(0), list);
+        }
+        return map;
+    }
+
+    class RelationFrequencyCombi implements Comparable<RelationFrequencyCombi> {
+        String klarCand = "";
+        String keyCand = "";
+        double frequency;
+
+        RelationFrequencyCombi(RelationFrequency[] combi) {
+            for (RelationFrequency relationFrequency : combi) {
+                klarCand += (char)relationFrequency.klarCand;
+                keyCand += (char)relationFrequency.keyCand;
+            }
+
+            frequency = bewertung(uniPrio, diPrio, triPrio);
+        }
+
+        @Override
+        public String toString() {
+            return klarCand + " | " + keyCand;
+        }
+
+        @Override
+        public int compareTo(RelationFrequencyCombi o) {
+            return Double.compare(o.frequency, frequency);
+        }
+
+        private double bewertung(double g1, double g2, double g3) {
+
+            double result;
+            double k1 = 0, k2 = 0, k3 = 0;
+            double s1 = 0, s2 = 0, s3 = 0;
+
+            for (int i = 0; i < keyCand.length(); i++) {
+                s1 += uniGram.get(klarCand.substring(i, i+1)).getFrequency();
+                k1 += uniGram.get(keyCand.substring(i,i+1)).getFrequency();
+            }
+
+            for (int i = 0; i < keyCand.length() - 1; i++) {
+                if ((diGram.get(klarCand.substring(i, i+2))) != null) {
+                    s2 += diGram.get(klarCand.substring(i, i+2)).getFrequency();
+                } else {
+                    s2 += 0;
+                }
+
+                if ((diGram.get(keyCand.substring(i, i+2))) != null) {
+                    k2 += diGram.get(keyCand.substring(i, i+2)).getFrequency();
+                } else {
+                    k2 += 0;
+                }
+            }
+
+            for (int i = 0; i < keyCand.length() - 2; i++) {
+                if ((triGram.get(klarCand.substring(i, i+3))) != null) {
+                    s3 += triGram.get(klarCand.substring(i, i+3)).getFrequency();
+                } else {
+                    s3 += 0;
+                }
+
+                if ((triGram.get(keyCand.substring(i, i+3))) != null) {
+                    k3 += triGram.get(keyCand.substring(i, i+3)).getFrequency();
+                } else {
+                    k3 += 0;
+                }
+            }
+
+            result = (g1 * k1 + g2 * k2 + g3 * k3) * (g1 * s1 + g2 * s2 + g3 * s3);
+
+            return result;
+        }
+    }
+
+    class RelationFrequency implements Comparable<RelationFrequency> {
+        int klarCand;
+        int keyCand;
+
+        public RelationFrequency(char c, char klarCand) {
+            this.klarCand = klarCand;
+            //c = (char)charMap.mapChar(c);
+            //klarCand = (char)charMap.mapChar(klarCand);
+
+            int character = (c - klarCand + 10 * modulus) % modulus;
+            character = charMap.remapChar(character);
+            this.keyCand = character;
+        }
+
+        public double getFrequency() {
+            double d;
+            try{
+                d = uniGram.get(String.valueOf((char)klarCand)).getFrequency() * uniGram.get(String.valueOf((char)keyCand)).getFrequency();
+            } catch (Exception e) {
+                d = -1;
+            }
+            return d;
+        }
+
+        @Override
+        public int compareTo(RelationFrequency o) {
+            return Double.compare(o.getFrequency(), getFrequency());
+        }
+
+        @Override
+        public String toString() {
+            return "RelationFreqency{" +
+                    "klarCand=" + (char) klarCand +
+                    ", keyCand=" + (char) keyCand +
+                    "} = " + getFrequency();
+        }
+    }
+
+    private List<RelationFrequencyCombi> getCombination(List<RelationFrequency>[] relationFrequencys) {
+        return combination(relationFrequencys, new LinkedList<>(), new ArrayList<>(relationFrequencys.length));
+    }
+
+
+    private List<RelationFrequencyCombi> combination(List<RelationFrequency>[] relationFrequencys, List<RelationFrequencyCombi> ret, List<RelationFrequency> prefix) {
+        //prefix.stream().forEach(relationFrequency -> System.out.print((char)relationFrequency.klarCand));
+        //System.out.println();
+        //System.out.println();
+        if (prefix.size() < relationFrequencys.length) {
+            for (RelationFrequency relationFrequency : relationFrequencys[prefix.size()]) {
+                prefix.add(relationFrequency);
+                combination(relationFrequencys, ret, prefix);
+                prefix.remove(prefix.size() - 1);
+            }
+        } else {
+            RelationFrequency[] rf = prefix.toArray(new RelationFrequency[prefix.size()]);
+            ret.add(0, new RelationFrequencyCombi(rf));
+        }
+        return ret;
+        /*List<RelationFrequency> la = relationFrequencys[0];
+        List<RelationFrequency> lb = relationFrequencys[1];
+        List<RelationFrequency> lc = relationFrequencys[2];
+        List<RelationFrequency> ld = relationFrequencys[3];
+
+        for (RelationFrequency aLa : la) {
+            for (RelationFrequency aLb : lb) {
+                for (RelationFrequency aLc : lc) {
+                    for (RelationFrequency aLd : ld) {
+                        RelationFrequencyCombi combi = new RelationFrequencyCombi(new RelationFrequency[] {aLa, aLb, aLc, aLd});
+                        list.add(combi);
+                    }
+                }
+            }
+        }
+        return list;*/
+    }
 
   /**
    * Entschlüsselt den durch den Reader <code>ciphertext</code> gegebenen
@@ -65,14 +315,15 @@ public class RunningKey extends Cipher {
       BufferedReader keyText = Files.newBufferedReader(key, Charset.forName(launcher.getInFileEncoding()));
       int keyChar;
       int character;
-      while ((character = ciphertext.read()) != -1 && (keyChar = keyText.read()) != -1) {
+      while ((character = ciphertext.read()) != -1) {
         character = charMap.mapChar(character);
-        keyChar = charMap.mapChar(keyChar);
         if (character != -1) {
-          character = (character - keyChar + modulus) % modulus;
+            keyChar = nextValidChar(keyText);
+            character = (character - keyChar + modulus) % modulus;
           character = charMap.remapChar(character);
           cleartext.write(character);
         } else {
+            //System.err.println((char)character);
           // Ein überlesenes Zeichen sollte bei korrekter Chiffretext-Datei
           // eigentlich nicht auftreten können.
         }
@@ -86,6 +337,20 @@ public class RunningKey extends Cipher {
       System.exit(1);
     }
   }
+
+    int nextValidChar(BufferedReader in) throws IOException {
+        int c = -1;
+        do {
+            c = in.read();
+            if (c == -1) {
+                return -1;
+            }
+            // ToDo
+            c = Character.toLowerCase(c);
+            c = charMap.mapChar(c);
+        } while (c == -1);
+        return c;
+    }
 
   /**
    * Verschlüsselt den durch den Reader <code>cleartext</code> gegebenen
@@ -114,15 +379,19 @@ public class RunningKey extends Cipher {
       boolean characterSkipped = false;
       // Lese zeichenweise aus der Klartextdatei, bis das Dateiende erreicht
       // ist. Der Buchstabe a wird z.B. als ein Wert von 97 gelesen.
-      while ((character = cleartext.read()) != -1 && (keyChar = keyText.read()) != -1) {
+      while ((character = cleartext.read()) != -1) {
         // Bilde 'character' auf dessen interne Darstellung ab, d.h. auf einen
         // Wert der Menge {0, 1, ..., Modulus - 1}. Ist z.B. a der erste
         // Buchstabe des Alphabets, wird die gelesene 97 auf 0 abgebildet:
         // mapChar(97) = 0.
+          // ToDo
+          character = Character.toLowerCase(character);
+
         character = charMap.mapChar(character);
-        keyChar = charMap.mapChar(keyChar);
-        if (character != -1 && keyChar != -1) {
-          // Das gelesene Zeichen ist im benutzten Alphabet enthalten und konnte
+        if (character != -1) {
+            keyChar = nextValidChar(keyText);
+
+            // Das gelesene Zeichen ist im benutzten Alphabet enthalten und konnte
           // abgebildet werden. Die folgende Quellcode-Zeile stellt den Kern der
           // Caesar-Chiffrierung dar: Addiere zu (der internen Darstellung von)
           // 'character' zyklisch den 'shift' hinzu.
@@ -139,6 +408,7 @@ public class RunningKey extends Cipher {
         } else {
           // Das gelesene Zeichen ist im benutzten Alphabet nicht enthalten.
           characterSkipped = true;
+            //System.err.println((char)character);
         }
       }
       if (characterSkipped) {
