@@ -135,11 +135,10 @@ public class RunningKey extends Cipher {
                         komischeTabelle.add(entry);
                     } else {
                         if (map.get(chipher.charAt(i)) != null) {
-                            komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 6)); //
+                            komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 26)); //
                         } else {
                             System.err.printf("Unigram ist blöd. %s fehlt", chipher.charAt(i) + "");
                         }
-
                     }
                 }
 
@@ -150,7 +149,7 @@ public class RunningKey extends Cipher {
 
                 System.out.println("Es wurden folgende sinnvolle Kombinationen gefunden:");
                 System.out.printf("%10s | %10s | %10s | %20s | %10s%n", "Position", "Klar", "Key", "Wahrscheinlichkeit", "init");
-                for (int i = 0; i < 50 && i < relationFrequencyCombiList.size(); i++) {
+                for (int i = 0; i < 25 && i < relationFrequencyCombiList.size(); i++) {
                     System.out.printf("%10d | %10s | %10s | %20f | %10f%n", i, relationFrequencyCombiList.get(i).klarCand, relationFrequencyCombiList.get(i).keyCand, relationFrequencyCombiList.get(i).frequency, relationFrequencyCombiList.get(i).initial);
                 }
 
@@ -169,7 +168,7 @@ public class RunningKey extends Cipher {
                     case "j":
                         continue out;
                     case "v":
-                        start++;
+                        //start++;
                         end++;
                         if (end >= chipher.length()) {
                             break out;
@@ -177,7 +176,7 @@ public class RunningKey extends Cipher {
                         continue in;
                     case "z":
                         start--;
-                        end--;
+                        //end--;
                         if (start <= 0) {
                             break out;
                         }
@@ -190,7 +189,7 @@ public class RunningKey extends Cipher {
         } while (true);
 
         try {
-            cleartext.write(String.copyValueOf(klarText));
+            cleartext.write(String.valueOf(klarText));
             cleartext.flush();
             ciphertext.close();
         } catch (IOException e) {
@@ -201,7 +200,7 @@ public class RunningKey extends Cipher {
             BufferedWriter bufferedWriter = Files.newBufferedWriter(key);
             bufferedWriter.write(String.valueOf(keyText));
             bufferedWriter.flush();
-            ciphertext.close();
+            bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -266,42 +265,27 @@ public class RunningKey extends Cipher {
             for (int i = 0; i < keyCand.length(); i++) {
                 if (uniGram.get(klarCand.substring(i, i + 1)) != null) {
                     s1 += uniGram.get(klarCand.substring(i, i + 1)).getFrequency();
-                } else {
-                    s1 -= 1;
                 }
                 if (uniGram.get(keyCand.substring(i, i + 1)) != null) {
                     k1 += uniGram.get(keyCand.substring(i, i + 1)).getFrequency();
-                } else {
-                    k1 -= 1;
                 }
-
             }
 
             for (int i = 0; i < keyCand.length() - 1; i++) {
                 if ((diGram.get(klarCand.substring(i, i + 2))) != null) {
                     s2 += diGram.get(klarCand.substring(i, i + 2)).getFrequency();
-                } else {
-                    s2 -= 1;
                 }
-
                 if ((diGram.get(keyCand.substring(i, i + 2))) != null) {
                     k2 += diGram.get(keyCand.substring(i, i + 2)).getFrequency();
-                } else {
-                    k2 -= 1;
                 }
             }
 
             for (int i = 0; i < keyCand.length() - 2; i++) {
                 if ((triGram.get(klarCand.substring(i, i + 3))) != null) {
                     s3 += triGram.get(klarCand.substring(i, i + 3)).getFrequency();
-                } else {
-                    s3 -= 1;
                 }
-
                 if ((triGram.get(keyCand.substring(i, i + 3))) != null) {
                     k3 += triGram.get(keyCand.substring(i, i + 3)).getFrequency();
-                } else {
-                    k3 -= 1;
                 }
             }
 
@@ -323,7 +307,7 @@ public class RunningKey extends Cipher {
 
             int character = (c - klarCand + 10 * modulus) % modulus;
             character = charMap.remapChar(character);
-            this.keyCand = character;
+            keyCand = character;
             frequency = getFrequency();
         }
 
@@ -351,16 +335,16 @@ public class RunningKey extends Cipher {
         }
     }
 
-    private List<RelationFrequencyCombi> getCombination(List<RelationFrequency>[] relationFrequencys) {
-        return combination(relationFrequencys, new LinkedList<>(), new ArrayList<>(relationFrequencys.length));
+    private List<RelationFrequencyCombi> getCombination(List<RelationFrequency>[] relationFrequencies) {
+        return combination(relationFrequencies, new LinkedList<>(), new ArrayList<>(relationFrequencies.length));
     }
 
 
-    private List<RelationFrequencyCombi> combination(List<RelationFrequency>[] relationFrequencys, List<RelationFrequencyCombi> ret, List<RelationFrequency> prefix) {
-        if (prefix.size() < relationFrequencys.length) {
-            for (RelationFrequency relationFrequency : relationFrequencys[prefix.size()]) {
+    private List<RelationFrequencyCombi> combination(List<RelationFrequency>[] relationFrequencies, List<RelationFrequencyCombi> ret, List<RelationFrequency> prefix) {
+        if (prefix.size() < relationFrequencies.length) {
+            for (RelationFrequency relationFrequency : relationFrequencies[prefix.size()]) {
                 prefix.add(relationFrequency);
-                combination(relationFrequencys, ret, prefix);
+                combination(relationFrequencies, ret, prefix);
                 prefix.remove(prefix.size() - 1);
             }
         } else {
