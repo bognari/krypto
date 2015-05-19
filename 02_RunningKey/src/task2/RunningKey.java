@@ -130,11 +130,12 @@ public class RunningKey extends Cipher {
                         RelationFrequency relationFrequency = new RelationFrequency();
                         relationFrequency.klarCand = klarText[i];
                         relationFrequency.keyCand = keyText[i];
+                        relationFrequency.frequency = 100.0;
                         entry.add(relationFrequency);
                         komischeTabelle.add(entry);
                     } else {
                         if (map.get(chipher.charAt(i)) != null) {
-                            komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 10));
+                            komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 6)); //
                         } else {
                             System.err.printf("Unigram ist blöd. %s fehlt", chipher.charAt(i) + "");
                         }
@@ -148,9 +149,9 @@ public class RunningKey extends Cipher {
                 Collections.sort(relationFrequencyCombiList);
 
                 System.out.println("Es wurden folgende sinnvolle Kombinationen gefunden:");
-                System.out.printf("%10s | %10s | %10s | %10s%n", "Position", "Klar", "Key", "Wahrscheinlichkeit");
-                for (int i = 0; i < 10 && i < relationFrequencyCombiList.size(); i++) {
-                    System.out.printf("%10d | %10s | %10s | %10f%n", i, relationFrequencyCombiList.get(i).klarCand, relationFrequencyCombiList.get(i).keyCand, relationFrequencyCombiList.get(i).frequency);
+                System.out.printf("%10s | %10s | %10s | %20s | %10s%n", "Position", "Klar", "Key", "Wahrscheinlichkeit", "init");
+                for (int i = 0; i < 50 && i < relationFrequencyCombiList.size(); i++) {
+                    System.out.printf("%10d | %10s | %10s | %20f | %10f%n", i, relationFrequencyCombiList.get(i).klarCand, relationFrequencyCombiList.get(i).keyCand, relationFrequencyCombiList.get(i).frequency, relationFrequencyCombiList.get(i).initial);
                 }
 
                 System.out.println();
@@ -234,14 +235,16 @@ public class RunningKey extends Cipher {
         String klarCand = "";
         String keyCand = "";
         double frequency;
+        double initial;
 
         RelationFrequencyCombi(RelationFrequency[] combi) {
             for (RelationFrequency relationFrequency : combi) {
                 klarCand += (char) relationFrequency.klarCand;
                 keyCand += (char) relationFrequency.keyCand;
+                initial += relationFrequency.frequency;
             }
 
-            frequency = bewertung(uniPrio, diPrio, triPrio);
+            frequency += bewertung(uniPrio, diPrio, triPrio);
         }
 
         @Override
@@ -261,21 +264,30 @@ public class RunningKey extends Cipher {
             double s1 = 0, s2 = 0, s3 = 0;
 
             for (int i = 0; i < keyCand.length(); i++) {
-                s1 += uniGram.get(klarCand.substring(i, i + 1)).getFrequency();
-                k1 += uniGram.get(keyCand.substring(i, i + 1)).getFrequency();
+                if (uniGram.get(klarCand.substring(i, i + 1)) != null) {
+                    s1 += uniGram.get(klarCand.substring(i, i + 1)).getFrequency();
+                } else {
+                    s1 -= 1;
+                }
+                if (uniGram.get(keyCand.substring(i, i + 1)) != null) {
+                    k1 += uniGram.get(keyCand.substring(i, i + 1)).getFrequency();
+                } else {
+                    k1 -= 1;
+                }
+
             }
 
             for (int i = 0; i < keyCand.length() - 1; i++) {
                 if ((diGram.get(klarCand.substring(i, i + 2))) != null) {
                     s2 += diGram.get(klarCand.substring(i, i + 2)).getFrequency();
                 } else {
-                    s2 += 0;
+                    s2 -= 1;
                 }
 
                 if ((diGram.get(keyCand.substring(i, i + 2))) != null) {
                     k2 += diGram.get(keyCand.substring(i, i + 2)).getFrequency();
                 } else {
-                    k2 += 0;
+                    k2 -= 1;
                 }
             }
 
@@ -283,13 +295,13 @@ public class RunningKey extends Cipher {
                 if ((triGram.get(klarCand.substring(i, i + 3))) != null) {
                     s3 += triGram.get(klarCand.substring(i, i + 3)).getFrequency();
                 } else {
-                    s3 += 0;
+                    s3 -= 1;
                 }
 
                 if ((triGram.get(keyCand.substring(i, i + 3))) != null) {
                     k3 += triGram.get(keyCand.substring(i, i + 3)).getFrequency();
                 } else {
-                    k3 += 0;
+                    k3 -= 1;
                 }
             }
 
@@ -302,27 +314,23 @@ public class RunningKey extends Cipher {
     class RelationFrequency implements Comparable<RelationFrequency> {
         int klarCand;
         int keyCand;
+        double frequency;
 
-        public RelationFrequency() {
-
-        }
-
-        ;
+        public RelationFrequency() {}
 
         public RelationFrequency(char c, char klarCand) {
             this.klarCand = klarCand;
-            //c = (char)charMap.mapChar(c);
-            //klarCand = (char)charMap.mapChar(klarCand);
 
             int character = (c - klarCand + 10 * modulus) % modulus;
             character = charMap.remapChar(character);
             this.keyCand = character;
+            frequency = getFrequency();
         }
 
         public double getFrequency() {
             double d;
             try {
-                d = uniGram.get(String.valueOf((char) klarCand)).getFrequency() * uniGram.get(String.valueOf((char) keyCand)).getFrequency();
+                d = (uniGram.get(String.valueOf((char) klarCand)).getFrequency()) * (uniGram.get(String.valueOf((char) keyCand)).getFrequency());
             } catch (Exception e) {
                 d = -1;
             }
@@ -331,7 +339,7 @@ public class RunningKey extends Cipher {
 
         @Override
         public int compareTo(RelationFrequency o) {
-            return Double.compare(o.getFrequency(), getFrequency());
+            return Double.compare(o.frequency, frequency);
         }
 
         @Override
@@ -339,7 +347,7 @@ public class RunningKey extends Cipher {
             return "RelationFreqency{" +
                     "klarCand=" + (char) klarCand +
                     ", keyCand=" + (char) keyCand +
-                    "} = " + getFrequency();
+                    "} = " + frequency;
         }
     }
 
@@ -349,9 +357,6 @@ public class RunningKey extends Cipher {
 
 
     private List<RelationFrequencyCombi> combination(List<RelationFrequency>[] relationFrequencys, List<RelationFrequencyCombi> ret, List<RelationFrequency> prefix) {
-        //prefix.stream().forEach(relationFrequency -> System.out.print((char)relationFrequency.klarCand));
-        //System.out.println();
-        //System.out.println();
         if (prefix.size() < relationFrequencys.length) {
             for (RelationFrequency relationFrequency : relationFrequencys[prefix.size()]) {
                 prefix.add(relationFrequency);
@@ -363,22 +368,6 @@ public class RunningKey extends Cipher {
             ret.add(0, new RelationFrequencyCombi(rf));
         }
         return ret;
-        /*List<RelationFrequency> la = relationFrequencys[0];
-        List<RelationFrequency> lb = relationFrequencys[1];
-        List<RelationFrequency> lc = relationFrequencys[2];
-        List<RelationFrequency> ld = relationFrequencys[3];
-
-        for (RelationFrequency aLa : la) {
-            for (RelationFrequency aLb : lb) {
-                for (RelationFrequency aLc : lc) {
-                    for (RelationFrequency aLd : ld) {
-                        RelationFrequencyCombi combi = new RelationFrequencyCombi(new RelationFrequency[] {aLa, aLb, aLc, aLd});
-                        list.add(combi);
-                    }
-                }
-            }
-        }
-        return list;*/
     }
 
     /**
@@ -402,8 +391,6 @@ public class RunningKey extends Cipher {
                         character = (character - keyChar + modulus) % modulus;
                         character = charMap.remapChar(character);
                         cleartext.write(character);
-                    } else {
-
                     }
                 } else {
                     //System.err.println((char)character);
@@ -422,14 +409,14 @@ public class RunningKey extends Cipher {
     }
 
     int nextValidChar(BufferedReader in) throws IOException {
-        int c = -1;
+        int c;
         do {
             c = in.read();
             if (c == -1) {
                 return -1;
             }
             // ToDo
-            // c = Character.toLowerCase(c);
+            c = Character.toLowerCase(c);
             c = charMap.mapChar(c);
         } while (c == -1);
         return c;
@@ -466,7 +453,7 @@ public class RunningKey extends Cipher {
                 // Buchstabe des Alphabets, wird die gelesene 97 auf 0 abgebildet:
                 // mapChar(97) = 0.
                 // ToDo
-                // character = Character.toLowerCase(character);
+                character = Character.toLowerCase(character);
 
                 character = charMap.mapChar(character);
                 if (character != -1) {
