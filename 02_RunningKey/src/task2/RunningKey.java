@@ -135,7 +135,7 @@ public class RunningKey extends Cipher {
                         komischeTabelle.add(entry);
                     } else {
                         if (map.get(chipher.charAt(i)) != null) {
-                            komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 26)); //
+                            komischeTabelle.add(map.get(chipher.charAt(i)).subList(0, 15)); //
                         } else {
                             System.err.printf("Unigram ist blöd. %s fehlt", chipher.charAt(i) + "");
                         }
@@ -191,7 +191,7 @@ public class RunningKey extends Cipher {
         try {
             cleartext.write(String.valueOf(klarText));
             cleartext.flush();
-            ciphertext.close();
+            cleartext.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
