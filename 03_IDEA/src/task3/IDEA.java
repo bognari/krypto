@@ -12,10 +12,12 @@
 
 package task3;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.StringTokenizer;
 
 import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
 
@@ -25,68 +27,483 @@ import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
  * @author Martin Klußmann
  * @version 1.1 - Sat Apr 03 21:57:35 CEST 2010
  */
+
+
+
+//TODO: dechiper machen (siehe dechiper_TODO
+
+    //TODO CBD sollte einfach gehen
+
+
 public final class IDEA extends BlockCipher {
+    String myKey;
+    int MAX_16=65535;
+    int[] keyArray = new int[16];
+    int[] cbc= new int[4];
+    boolean cbcMode=false;
+    /**
+     * Entschlüsselt den durch den FileInputStream <code>ciphertext</code>
+     * gegebenen Chiffretext und schreibt den Klartext in den FileOutputStream
+     * <code>cleartext</code>.
+     *
+     * @param ciphertext Der FileInputStream, der den Chiffretext liefert.
+     * @param cleartext  Der FileOutputStream, in den der Klartext geschrieben werden soll.
+     */
+    public void decipher(FileInputStream ciphertext, FileOutputStream cleartext) {
 
-  /**
-   * Entschlüsselt den durch den FileInputStream <code>ciphertext</code>
-   * gegebenen Chiffretext und schreibt den Klartext in den FileOutputStream
-   * <code>cleartext</code>.
-   *
-   * @param ciphertext
-   * Der FileInputStream, der den Chiffretext liefert.
-   * @param cleartext
-   * Der FileOutputStream, in den der Klartext geschrieben werden soll.
-   */
-  public void decipher(FileInputStream ciphertext, FileOutputStream cleartext) {
 
-  }
+        /*
+        TODO: finalKey wie zuvor generieren,Roundkeys wie bisher erstellen, dann roundkeys entsprechend der tabelle 59 umwandeln zu dechiffreroundKeys
+        TODO: enchiperonBlock mit dem modifizeirten key starten
+        ???
+        PROFIT
+         */
 
-  /**
-   * Verschlüsselt den durch den FileInputStream <code>cleartext</code>
-   * gegebenen Klartext und schreibt den Chiffretext in den FileOutputStream
-   * <code>ciphertext</code>.
-   * 
-   * @param cleartext
-   * Der FileInputStream, der den Klartext liefert.
-   * @param ciphertext
-   * Der FileOutputStream, in den der Chiffretext geschrieben werden soll.
-   */
-  public void encipher(FileInputStream cleartext, FileOutputStream ciphertext) {
+        //JUNK
 
-  }
+        // i told u ITS JUNK
 
-  /**
-   * Erzeugt einen neuen Schlüssel.
-   * 
-   * @see #readKey readKey
-   * @see #writeKey writeKey
-   */
-  public void makeKey() {
 
-    System.out.println("Dummy für die Schlüsselerzeugung.");
-  }
+        // Key kann man als int nehmen und dann shiften .
 
-  /**
-   * Liest den Schlüssel mit dem Reader <code>key</code>.
-   * 
-   * @param key
-   * Der Reader, der aus der Schlüsseldatei liest.
-   * @see #makeKey makeKey
-   * @see #writeKey writeKey
-   */
-  public void readKey(BufferedReader key) {
+        // aber blocks ?
 
-  }
+        /*
+        short a=197;
+        short b=341;
+        short result = (short) (s1 ^ s2);
+        //Integer.toBinaryString(number) ???
+         */
 
-  /**
-   * Schreibt den Schlüssel mit dem Writer <code>key</code>.
-   * 
-   * @param key
-   * Der Writer, der in die Schlüsseldatei schreibt.
-   * @see #makeKey makeKey
-   * @see #readKey readKey
-   */
-  public void writeKey(BufferedWriter key) {
+        /*
+        BitSet test = new BitSet(16);
 
-  }
+        BitSet bits1 = new BitSet(16);
+        BitSet bits2 = new BitSet(16);
+
+        for(int i=0; i<16; i++) {
+            if((i%2) == 0) bits1.set(i);
+            if((i%5) != 0) bits2.set(i);
+        }
+        System.out.println("Initial pattern in bits1: ");
+        System.out.println(bits1);
+        System.out.println("\nInitial pattern in bits2: ");
+        System.out.println(bits2);
+
+        bits1.clear();
+        bits1.set(15);
+        System.out.println(bits1);
+        bits2.clear();
+        bits2.set(15);
+        System.out.println(bits2);
+        bits1.or(bits2);
+        System.out.println(bits1);
+
+        System.out.println(bits1.toString().replace(' ','0'));
+
+        */
+
+
+        /*
+        // #################### REAL STUFF STARTS HERE ##############
+
+        System.out.println(MAX_16);
+        System.out.println(Integer.toBinaryString(MAX_16));
+        int result2;
+        result2=add(MAX_16, 8);
+        System.out.println(result2);
+        System.out.println(Integer.toBinaryString(result2));
+
+        //biggest Z*2^16 = 32767 = 111111111111111
+
+        //2 hoch 16 = 65536
+
+        int foo = Integer.parseInt("1001", 2);
+        System.out.println("par : " + foo);
+*/
+
+    }
+
+    /**
+     * add two values in Z*2^16
+     *
+     * @param inputA first Input max Z*2^16
+     * @param inputB secound input max Z*2^16
+     * @return the sum of both in Z*2^16
+     */
+    private int add(int inputA, int inputB){
+        return (inputA+inputB)%MAX_16;
+
+    }
+
+    /**
+     * xor operation dont change the binary view
+     * @param inputA first Input max Z*2^16
+     * @param inputB secound input max Z*2^16
+     * @return XOR of both
+     */
+
+    private int xor(int inputA,int inputB) {
+        return (inputA ^ inputB); // by default no change in bit length
+    }
+
+    /**
+     * multiplicate two values in Z*2^16+1 and maps them as needed
+     *
+     * @param inputA first Input max Z*2^16
+     * @param inputB secound input max Z*2^16
+     * @return the sum of both in Z*2^16
+     */
+
+    private int mul(int inputA, int inputB){
+       // if(inputA==0){inputA=MAX_16;}
+        inputA=inputA==0?MAX_16:inputA;
+        inputB=inputB==0?MAX_16:inputB;
+       // return ((inputA*inputB)%(MAX_16+1))==0?MAX_16:((inputA*inputB)%(MAX_16+1));
+        //TODO nur long wenn notwendig machen
+        long fire=(long)((long)inputA*(long)inputB);
+        int hold=(int)(fire%(MAX_16+1));
+        if(hold==0){
+            return MAX_16;
+        }
+        return hold;
+    }
+
+
+    /**
+     *
+     */
+    /**
+     * Verschlüsselt den durch den FileInputStream <code>cleartext</code>
+     * gegebenen Klartext und schreibt den Chiffretext in den FileOutputStream
+     * <code>ciphertext</code>.
+     *
+     * @param cleartext  Der FileInputStream, der den Klartext liefert.
+     * @param ciphertext Der FileOutputStream, in den der Chiffretext geschrieben werden soll.
+     */
+    public void encipher(FileInputStream cleartext, FileOutputStream ciphertext) {
+
+        makeKeyArray();
+        System.out.println("Starte encipher methode mit key = " + myKey);
+        System.out.println("Starte encipher methode mit key = " + keyArray[0]);
+        // need to get leading zeroes
+
+        int tester;
+        tester=mul(50116,49400);
+        // this could be moved to an other function like makeKey()
+        System.out.println(tester);
+
+        String finalKey="";
+        String newKey;
+        for (int i=0;i<keyArray.length;i++) {
+            newKey = Integer.toBinaryString(keyArray[i]);
+            while (newKey.length() < 8) {
+                newKey = "0" + newKey;
+            }
+            System.out.println("newKey = " + newKey);
+            finalKey=finalKey.concat(newKey);
+        }
+        System.out.println("FinalKey = " + finalKey);
+        // runden key int key als string haben, dann entsprechend zyklisch shiften als string , dann den key zerschneiden und in int parsen.
+
+        //need to split the long key into round keys, maybe i shall move this into a different function
+
+        int bs;
+        boolean even=false;
+        String block="";
+        String secoundBytePart="";
+
+
+        int[] chiffretextInt=new int[4];
+        int[] cleartextInt=new int[4];
+        int c=0;
+        try{
+            while ((bs = cleartext.read()) != -1) {
+                //bs=(byte)cleartext.read();
+                System.out.println("bs = " + bs);
+                if (even){
+                    secoundBytePart=Integer.toBinaryString(bs);
+                    while (secoundBytePart.length() < 8) {
+                        secoundBytePart = "0" + secoundBytePart;
+                    }
+                    block=block+secoundBytePart;
+                    cleartextInt[c]=Integer.parseInt(block, 2);
+                    c++;
+                    even=false;
+                    if(c==4){
+                        // CBC
+                            //getRandomString 64bit
+                        //dummy
+                        cbc[0]=0;
+                        cbc[1]=0;
+                        cbc[2]=0;
+                        cbc[3]=0;
+
+
+                            //split into 16 bit strings
+
+
+                        if(cbcMode){
+                            cleartextInt[0]=xor(cleartextInt[0],cbc[0]);
+                            cleartextInt[1]=xor(cleartextInt[1],cbc[1]);
+                            cleartextInt[2]=xor(cleartextInt[2],cbc[2]);
+                            cleartextInt[3]=xor(cleartextInt[3],cbc[3]);
+                        }
+                        // CBC_END
+                        chiffretextInt=enchiperOneBlock(finalKey,cleartextInt);
+                        //WRITE
+                        String strOut="";
+                        for (int i=0;i<4;i++) {
+                            strOut = Integer.toBinaryString(chiffretextInt[i]);
+                            while (strOut.length() < 16) {
+                                strOut = "0" + strOut;
+                            }
+                            System.out.println("out teil 1" + Integer.parseInt(strOut.substring(0,8), 2));
+                            System.out.println("out teil 2" + (Integer.parseInt(strOut.substring(8,16), 2)));
+                            ciphertext.write(Integer.parseInt(strOut.substring(0,8), 2));
+                            ciphertext.write(Integer.parseInt(strOut.substring(8,16), 2));
+                        }
+
+                        //WRITE_END
+
+
+
+
+                       // ciphertext.write(chiffretextInt[0]);
+                      //  ciphertext.write(chiffretextInt[1]);
+                       // ciphertext.write(chiffretextInt[2]);
+                       // ciphertext.write(chiffretextInt[3]);
+
+                        c=0;
+                    }
+                }else{
+                    block=Integer.toBinaryString(bs);
+                    even=true;
+                }
+
+            }
+            // nun auffüllen mit leerzeichen;
+            while (c<4) {
+                if (even) {
+                    block=block+"00000000";
+                    cleartextInt[c]=Integer.parseInt(block, 2);
+                    c++;
+                    even=false;
+                }else{
+                    block="0000000000000000";
+                    cleartextInt[c]=Integer.parseInt(block, 2);
+                    c++;
+                }
+            }
+            chiffretextInt=enchiperOneBlock(finalKey,cleartextInt);
+            //WRITE
+            String strOut="";
+            for (int i=0;i<4;i++) {
+                strOut = Integer.toBinaryString(chiffretextInt[i]);
+                while (strOut.length() < 16) {
+                    strOut = "0" + strOut;
+                }
+                ciphertext.write(Integer.parseInt(strOut.substring(0,8), 2));
+                ciphertext.write(Integer.parseInt(strOut.substring(8,16), 2));
+            }
+            /*
+            ciphertext.write(chiffretextInt[0]);
+            ciphertext.write(chiffretextInt[1]);
+            ciphertext.write(chiffretextInt[2]);
+            ciphertext.write(chiffretextInt[3]);
+            */
+        }catch (IOException e){
+            System.exit(1);
+        }
+
+        // O+ = XOR
+        // |+| = ADD
+        // O. = MUL
+
+        System.out.println("TOLLLLOOOLLOLO   " + chiffretextInt[0]);
+        System.out.println("TOLLLLOOOLLOLO   " + Integer.toBinaryString(chiffretextInt[0]));
+
+    }
+
+    /**
+     * Enchiper one block
+     */
+    private int[] enchiperOneBlock(String key,int[] parts){
+        //if(parts.length!=4)throw E;
+       // System.out.println("Toller key mit lange = "+ key.length());
+
+        int roundKeys[][]=makeRoundKeys(key);
+        // ive got my Keys
+        //int rK[]=roundKeys[0];
+
+/*
+        int test1=49;
+        int test2=52;
+        System.out.println(test1);
+        System.out.println(test2);
+        System.out.println(mul(test1,test2));
+        System.out.println(add(test1, test2));
+        System.out.println(xor(test1, test2));
+
+
+        System.out.println(parts[0]);
+        System.out.println(parts[1]);
+        System.out.println(parts[2]);
+        System.out.println(parts[3]);
+        */
+
+
+
+        int c=0;
+        while (c<8) {
+            parts = makeRound(roundKeys[c], parts);
+            c++;
+            /*
+            System.out.println("parts nach einer runde");
+            System.out.println(parts[0]);
+            System.out.println(parts[1]);
+            System.out.println(parts[2]);
+            System.out.println(parts[3]);
+            */
+        }
+        parts=makeFinalRound(roundKeys[8],parts);
+
+        System.out.println("FINAL PART = " + parts[0]);
+
+
+
+        return parts;
+
+
+
+    }
+
+    private int[] makeFinalRound(int[]roundKey,int[]parts){
+
+        int out[]=new int[4];
+        out[0]=mul(parts[0],roundKey[0]);
+        out[1]=add(parts[1],roundKey[1]);
+        out[2]=add(parts[2],roundKey[2]);
+        out[3]=mul(parts[3],roundKey[3]);
+        return out;
+    }
+
+
+    private int[] makeRound(int[]roundKey,int[]parts){
+
+        // TODO best performance values vs FULL formular
+
+        int a=mul(parts[0],roundKey[0]);
+        int b=add(parts[1],roundKey[1]);
+        int c=add(parts[2],roundKey[2]);
+        int d=mul(parts[3],roundKey[3]);
+        int e=xor(a,c);
+        int f=xor(b,d);
+        int g=mul(e,roundKey[4]);
+        int h=add(g,f);
+        int i=mul(h,roundKey[5]);
+        int j=add(g,i);
+
+
+
+        int out[]=new int[4];
+        out[0]=mul(a,i);
+        out[1]=mul(c,i);
+        out[2]=mul(b,j);
+        out[3]=mul(d,j);
+
+        return out;
+    }
+
+    private int[][] makeRoundKeys(String key){
+        // make key parts
+        int c=0;
+        int n=0;
+        int m=0;
+
+        int roundKeys[][]=new int[9][6]; // m n
+        while (m<8){
+            if (c>=8){
+                key=zykShift(key);
+                c=0;
+            }
+            if(n<6){
+               // System.out.println("Toller key mit lange = "+ key.length());
+                roundKeys[m][n]=Integer.parseInt(key.substring(c*16,((c+1)*16)-1),2);
+                n++;
+                c++;
+            }else {
+                n=0;
+                m++;
+            }
+        }
+        n=0;
+        while(n<4) {
+            roundKeys[8][n] = Integer.parseInt(key.substring(c * 16, (c + 1) * 16), 2);
+            n++;
+            c++;
+        }
+
+        return roundKeys;
+    }
+
+    /**
+     * zyklischer shift um 25 positionen
+     */
+    private String zykShift(String inputString){
+        return inputString.substring(25,inputString.length())+inputString.substring(0,25);
+    }
+
+    /**
+     * Convert the chars from the myKey String to the ASCII value in int in the array keyArray
+     */
+    private void makeKeyArray(){
+        for(int i=0;i<16;i++){
+            keyArray[i]=(int)myKey.charAt(i);
+        }
+
+
+
+    }
+
+    /**
+     * Erzeugt einen neuen Schlüssel.
+     *
+     * @see #readKey readKey
+     * @see #writeKey writeKey
+     */
+    public void makeKey() {
+
+        System.out.println("Dummy für die Schlüsselerzeugung.");
+    }
+
+    /**
+     * Liest den Schlüssel mit dem Reader <code>key</code>.
+     *
+     * @param key Der Reader, der aus der Schlüsseldatei liest.
+     * @see #makeKey makeKey
+     * @see #writeKey writeKey
+     */
+    public void readKey(BufferedReader key) {
+        try {
+            myKey = key.readLine();
+            key.close();
+        } catch (IOException e) {
+            System.err.println("Abbruch: Fehler beim Lesen oder Schließen der "
+                    + "Schlüsseldatei.");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    /**
+     * Schreibt den Schlüssel mit dem Writer <code>key</code>.
+     *
+     * @param key Der Writer, der in die Schlüsseldatei schreibt.
+     * @see #makeKey makeKey
+     * @see #readKey readKey
+     */
+    public void writeKey(BufferedWriter key) {
+
+    }
 }
