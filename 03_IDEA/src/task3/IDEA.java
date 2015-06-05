@@ -438,11 +438,11 @@ public final class IDEA extends BlockCipher {
     private int[] enchiperOneBlock(String key,int[] parts,boolean reverse){
         //if(parts.length!=4)throw E;
        // System.out.println("Toller key mit lange = "+ key.length());
-
+        int myRoundKeys[][]=new int[9][6];
         if(!reverse){
-            int roundKeys[][] = makeRoundKeys(key);
+            myRoundKeys = makeRoundKeys(key);
         }else{
-            int roundKeys[][] = makeRoundKeysReverse(key);
+            myRoundKeys= makeRoundKeysReverse(key);
         }
         // ive got my Keys
         //int rK[]=roundKeys[0];
@@ -451,7 +451,7 @@ public final class IDEA extends BlockCipher {
 
         int c=0;
         while (c<8) {
-            parts = makeRound(roundKeys[c], parts);
+            parts = makeRound(myRoundKeys[c], parts);
             c++;
             /*
             System.out.println("parts nach einer runde");
@@ -461,7 +461,7 @@ public final class IDEA extends BlockCipher {
             System.out.println(parts[3]);
             */
         }
-        parts = makeFinalRound(roundKeys[8],parts);
+        parts = makeFinalRound(myRoundKeys[8],parts);
 
        // System.out.println("FINAL PART = " + parts[0]);
 
@@ -550,6 +550,7 @@ public final class IDEA extends BlockCipher {
 
     private int[][] makeRoundKeysReverse(String key){
 
+        //TODO evtl ueberschriebt er irgendwas sollte nicht der fall sein, man kann es mal ueberpruefen
         if(!roundKeysSet){
             makeRoundKeys(key);
         }
@@ -564,7 +565,8 @@ public final class IDEA extends BlockCipher {
         roundKeysReverse[0][5]=roundKeys[7][5];
 
         int r=1; // =2 <=7
-        while(r<7){
+        while(r<=7){
+            System.out.println("round = " + r);
             roundKeysReverse[r][0]=inverse(roundKeys[8-r][0]);
             roundKeysReverse[r][1]=minusKey(roundKeys[8 - r][2]);
             roundKeysReverse[r][2]=minusKey(roundKeys[8-r][1]);
