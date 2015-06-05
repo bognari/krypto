@@ -12,15 +12,11 @@
 
 package task3;
 
+import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
+
 import java.io.*;
 import java.math.BigInteger;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.StringTokenizer;
-
-import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
+import java.util.Scanner;
 
 /**
  * Dummy-Klasse für den International Data Encryption Algorithm (IDEA).
@@ -39,6 +35,7 @@ import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
 public final class IDEA extends BlockCipher {
     String myKey;
     int MAX_16=65536;
+    BigInteger MAX_16_1 = BigInteger.valueOf(MAX_16 + 1);
     int[] keyArray = new int[16];
     int[] cbc= new int[4];
     boolean cbcMode=false;
@@ -232,7 +229,7 @@ public final class IDEA extends BlockCipher {
      * @return the sum of both in Z*2^16
      */
     private int add(int inputA, int inputB){
-        return (inputA+inputB)%MAX_16;
+        return (inputA & 0xffff + inputB & 0xffff) % MAX_16;
 
     }
 
@@ -244,7 +241,7 @@ public final class IDEA extends BlockCipher {
      */
 
     private int xor(int inputA,int inputB) {
-        return (inputA ^ inputB); // by default no change in bit length
+        return (inputA & 0xffff) ^ (inputB & 0xffff); // by default no change in bit length
     }
 
     /**
@@ -256,17 +253,7 @@ public final class IDEA extends BlockCipher {
      */
 
     private int mul(int inputA, int inputB){
-       // if(inputA==0){inputA=MAX_16;}
-        inputA=inputA==0?MAX_16:inputA;
-        inputB=inputB==0?MAX_16:inputB;
-       // return ((inputA*inputB)%(MAX_16+1))==0?MAX_16:((inputA*inputB)%(MAX_16+1));
-        //TODO nur long wenn notwendig machen
-        long fire=(long)((long)inputA*(long)inputB);
-        int hold=(int)(fire%(MAX_16+1));
-        if(hold==0){
-            return MAX_16;
-        }
-        return hold;
+        return BigInteger.valueOf(inputA & 0xffff).multiply(BigInteger.valueOf(inputB & 0xffff)).mod(MAX_16_1).intValue();
     }
 
 
@@ -461,7 +448,7 @@ public final class IDEA extends BlockCipher {
             System.out.println(parts[3]);
             */
         }
-        parts = makeFinalRound(myRoundKeys[8],parts);
+        parts = makeFinalRound(myRoundKeys[8], parts);
 
        // System.out.println("FINAL PART = " + parts[0]);
 
@@ -587,22 +574,16 @@ public final class IDEA extends BlockCipher {
         int out=(MAX_16-input)%MAX_16;
         return out;
     }
+
     /**
-     * algo 3.3
+     * Berechnet das Inverse in 2^16 + 1
      * @param input a
      * @return inverse
      */
     private int inverse(int input){
-
-
-        BigInteger bi1, bi2, bi3;
-        bi1= new BigInteger(Integer.toString(input));
-        bi2= new BigInteger(Integer.toString(MAX_16+1));
-        int n=MAX_16+1;
-       // System.out.println("GCD = " + bi1.gcd(bi2));
-        bi3 = bi1.modInverse(bi2);
-        return bi3.intValue();
+        return BigInteger.valueOf(input & 0xffff).modInverse(MAX_16_1).intValue();
     }
+
     /**
      * zyklischer shift um 25 positionen
      */
@@ -622,6 +603,18 @@ public final class IDEA extends BlockCipher {
 
     }
 
+    private boolean isKeyValid(String key) {
+        if (key.length() != 16) {
+            return false;
+        }
+        for (char c : key.toCharArray()) {
+            if (c < 33 || c > 176) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Erzeugt einen neuen Schlüssel.
      *
@@ -629,8 +622,24 @@ public final class IDEA extends BlockCipher {
      * @see #writeKey writeKey
      */
     public void makeKey() {
+        System.out.println("Soll der Key automatisch generiert werden?");
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.nextLine().equalsIgnoreCase("nein")) {
+            String inputKey = "";
+            do {
+                System.out.println("Geben Sie einen 16 Zeichen langen ASCII String ein.");
+                inputKey = scanner.nextLine();
+            } while (!isKeyValid(inputKey));
+            myKey = inputKey;
+        } else {
+            StringBuilder stringBuilder = new StringBuilder(16);
+            for (int i = 0; i < 16; i++) {
+                stringBuilder.append((char) (Math.random() * 94 + 33));
+            }
+            myKey = stringBuilder.toString();
+        }
 
-        System.out.println("Dummy für die Schlüsselerzeugung.");
+        System.out.printf("Der Key ist: \"%s\"%n", myKey);
     }
 
     /**
@@ -646,9 +655,12 @@ public final class IDEA extends BlockCipher {
             key.close();
         } catch (IOException e) {
             System.err.println("Abbruch: Fehler beim Lesen oder Schließen der "
-                    + "Schlüsseldatei.");
+                + "Schlüsseldatei.");
             e.printStackTrace();
             System.exit(1);
+        }
+        if (!isKeyValid(myKey)) {
+            System.err.printf("Der Key ist: \"%s\" ist invalid %n", myKey);
         }
     }
 
@@ -660,6 +672,16 @@ public final class IDEA extends BlockCipher {
      * @see #readKey readKey
      */
     public void writeKey(BufferedWriter key) {
+        try {
+            key.write(myKey);
 
+            key.newLine();
+            key.close();
+        } catch (IOException e) {
+            System.out.println("Abbruch: Fehler beim Schreiben oder Schließen der "
+                + "Schlüsseldatei.");
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }
