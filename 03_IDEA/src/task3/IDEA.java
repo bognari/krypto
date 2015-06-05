@@ -35,6 +35,7 @@ import java.util.Scanner;
 public final class IDEA extends BlockCipher {
     String myKey;
     int MAX_16=65536;
+    BigInteger MAX_16_1 = BigInteger.valueOf(MAX_16 + 1);
     int[] keyArray = new int[16];
     int[] cbc= new int[4];
     boolean cbcMode=false;
@@ -228,7 +229,7 @@ public final class IDEA extends BlockCipher {
      * @return the sum of both in Z*2^16
      */
     private int add(int inputA, int inputB){
-        return (inputA+inputB)%MAX_16;
+        return (inputA & 0xffff + inputB & 0xffff) % MAX_16;
 
     }
 
@@ -240,7 +241,7 @@ public final class IDEA extends BlockCipher {
      */
 
     private int xor(int inputA,int inputB) {
-        return (inputA ^ inputB); // by default no change in bit length
+        return (inputA & 0xffff) ^ (inputB & 0xffff); // by default no change in bit length
     }
 
     /**
@@ -252,17 +253,7 @@ public final class IDEA extends BlockCipher {
      */
 
     private int mul(int inputA, int inputB){
-       // if(inputA==0){inputA=MAX_16;}
-        inputA=inputA==0?MAX_16:inputA;
-        inputB=inputB==0?MAX_16:inputB;
-       // return ((inputA*inputB)%(MAX_16+1))==0?MAX_16:((inputA*inputB)%(MAX_16+1));
-        //TODO nur long wenn notwendig machen
-        long fire=(long)((long)inputA*(long)inputB);
-        int hold=(int)(fire%(MAX_16+1));
-        if(hold==0){
-            return MAX_16;
-        }
-        return hold;
+        return BigInteger.valueOf(inputA & 0xffff).multiply(BigInteger.valueOf(inputB & 0xffff)).mod(MAX_16_1).intValue();
     }
 
 
@@ -583,22 +574,16 @@ public final class IDEA extends BlockCipher {
         int out=(MAX_16-input)%MAX_16;
         return out;
     }
+
     /**
-     * algo 3.3
+     * Berechnet das Inverse in 2^16 + 1
      * @param input a
      * @return inverse
      */
     private int inverse(int input){
-
-
-        BigInteger bi1, bi2, bi3;
-        bi1= new BigInteger(Integer.toString(input));
-        bi2= new BigInteger(Integer.toString(MAX_16+1));
-        int n=MAX_16+1;
-       // System.out.println("GCD = " + bi1.gcd(bi2));
-        bi3 = bi1.modInverse(bi2);
-        return bi3.intValue();
+        return BigInteger.valueOf(input & 0xffff).modInverse(MAX_16_1).intValue();
     }
+
     /**
      * zyklischer shift um 25 positionen
      */
