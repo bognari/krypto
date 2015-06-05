@@ -12,14 +12,9 @@
 
 package task3;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.StringTokenizer;
-
 import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
+
+import java.io.*;
 
 /**
  * Dummy-Klasse für den International Data Encryption Algorithm (IDEA).
@@ -134,14 +129,14 @@ public final class IDEA extends BlockCipher {
         makeKeyArray();
         String finalKey="";
         String newKey;
-        for (int i=0;i<keyArray.length;i++) {
-            newKey = Integer.toBinaryString(keyArray[i]);
-            while (newKey.length() < 8) {
-                newKey = "0" + newKey;
-            }
-            System.out.println("newKey = " + newKey);
-            finalKey=finalKey.concat(newKey);
+      for (int aKeyArray : keyArray) {
+        newKey = Integer.toBinaryString(aKeyArray);
+        while (newKey.length() < 8) {
+          newKey = "0" + newKey;
         }
+        System.out.println("newKey = " + newKey);
+        finalKey = finalKey.concat(newKey);
+      }
         System.out.println("FinalKey = " + finalKey);
 
         // make reverseRoundkey need to moved to deciper one block or smothing like that maybe flag?
@@ -338,18 +333,18 @@ public final class IDEA extends BlockCipher {
         makeKeyArray();
         String finalKey="";
         String newKey;
-        for (int i=0;i<keyArray.length;i++) {
-            newKey = Integer.toBinaryString(keyArray[i]);
-            while (newKey.length() < 8) {
-                newKey = "0" + newKey;
-            }
-            System.out.println("newKey = " + newKey);
-            finalKey=finalKey.concat(newKey);
+      for (int aKeyArray : keyArray) {
+        newKey = Integer.toBinaryString(aKeyArray);
+        while (newKey.length() < 8) {
+          newKey = "0" + newKey;
         }
+        System.out.println("newKey = " + newKey);
+        finalKey = finalKey.concat(newKey);
+      }
         System.out.println("FinalKey = " + finalKey);
         // runden key int key als string haben, dann entsprechend zyklisch shiften als string , dann den key zerschneiden und in int parsen.
 
-        //need to split the long key into round keys, maybe i shall move this into a different function
+      //need to split the long key into round keys, maybe i shall move this into a different function
 
         int bs;
         boolean even=false;
@@ -747,6 +742,16 @@ public final class IDEA extends BlockCipher {
      * @see #readKey readKey
      */
     public void writeKey(BufferedWriter key) {
+        try {
+            key.write(myKey);
 
+            key.newLine();
+            key.close();
+        } catch (IOException e) {
+            System.out.println("Abbruch: Fehler beim Schreiben oder Schließen der "
+                + "Schlüsseldatei.");
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }
