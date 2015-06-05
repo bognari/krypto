@@ -57,8 +57,7 @@ public final class IDEA extends BlockCipher {
 
 
         /*
-        TODO: finalKey wie zuvor generieren,Roundkeys wie bisher erstellen, dann roundkeys entsprechend der tabelle 59 umwandeln zu dechiffreroundKeys
-        TODO: enchiperonBlock mit dem modifizeirten key starten
+        TODO: enchipermetohde mit reverse = true muss einen fehler werfen.
         ???
         PROFIT
          */
