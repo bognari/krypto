@@ -15,6 +15,7 @@ package task3;
 import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -649,8 +650,8 @@ public final class IDEA extends BlockCipher {
      * @return inverse
      */
     private int inverse(int input){
-
-        int n=MAX_16+1;
+        return BigInteger.valueOf(input).modInverse(BigInteger.valueOf(MAX_16)).intValue();
+        //int n=MAX_16+1;
         /*
         int g0,g1,g2;
         int u0,u1,u2;
@@ -662,6 +663,7 @@ public final class IDEA extends BlockCipher {
         v0=0;
         v1=1;
         */
+        /*
         int g[]=new int[4];
         int u[]=new int[4];
         int v[]=new int[4];
@@ -685,6 +687,7 @@ public final class IDEA extends BlockCipher {
         }
         int x=v[im1];
         return (x>0) ? x : (x+MAX_16+1);
+        */
     }
     /**
      * zyklischer shift um 25 positionen
