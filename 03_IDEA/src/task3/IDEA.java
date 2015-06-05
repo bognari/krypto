@@ -34,7 +34,7 @@ import java.util.Scanner;
 
 public final class IDEA extends BlockCipher {
     String myKey;
-    int MAX_16=65535;
+    int MAX_16=65536;
     int[] keyArray = new int[16];
     int[] cbc= new int[4];
     boolean cbcMode=false;
@@ -650,7 +650,7 @@ public final class IDEA extends BlockCipher {
      * @return inverse
      */
     private int inverse(int input){
-        return BigInteger.valueOf(input).modInverse(BigInteger.valueOf(MAX_16)).intValue();
+        return BigInteger.valueOf(input).modInverse(BigInteger.valueOf(MAX_16 + 1)).intValue();
         //int n=MAX_16+1;
         /*
         int g0,g1,g2;
