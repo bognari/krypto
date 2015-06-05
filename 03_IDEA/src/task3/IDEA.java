@@ -15,6 +15,7 @@ package task3;
 import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
 
 import java.io.*;
+import java.util.Scanner;
 
 /**
  * Dummy-Klasse für den International Data Encryption Algorithm (IDEA).
@@ -704,6 +705,18 @@ public final class IDEA extends BlockCipher {
 
     }
 
+    private boolean isKeyValid(String key) {
+        if (key.length() != 16) {
+            return false;
+        }
+        for (char c : key.toCharArray()) {
+            if (c < 33 || c > 176) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Erzeugt einen neuen Schlüssel.
      *
@@ -711,8 +724,24 @@ public final class IDEA extends BlockCipher {
      * @see #writeKey writeKey
      */
     public void makeKey() {
+        System.out.println("Soll der Key automatisch generiert werden?");
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.nextLine().equalsIgnoreCase("nein")) {
+            String inputKey = "";
+            do {
+                System.out.println("Geben Sie einen 16 Zeichen langen ASCII String ein.");
+                inputKey = scanner.nextLine();
+            } while (!isKeyValid(inputKey));
+            myKey = inputKey;
+        } else {
+            StringBuilder stringBuilder = new StringBuilder(16);
+            for (int i = 0; i < 16; i++) {
+                stringBuilder.append((char) (Math.random() * 94 + 32));
+            }
+            myKey = stringBuilder.toString();
+        }
 
-        System.out.println("Dummy für die Schlüsselerzeugung.");
+        System.out.printf("Der Key ist: \"%s\"%n", myKey);
     }
 
     /**
@@ -731,6 +760,9 @@ public final class IDEA extends BlockCipher {
                     + "Schlüsseldatei.");
             e.printStackTrace();
             System.exit(1);
+        }
+        if (!isKeyValid(myKey)) {
+            System.err.printf("Der Key ist: \"%s\" ist nicht valid %n", myKey);
         }
     }
 
