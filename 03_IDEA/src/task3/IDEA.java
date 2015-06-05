@@ -12,11 +12,15 @@
 
 package task3;
 
-import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
-
 import java.io.*;
 import java.math.BigInteger;
-import java.util.Scanner;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.StringTokenizer;
+
+import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
 
 /**
  * Dummy-Klasse für den International Data Encryption Algorithm (IDEA).
@@ -131,14 +135,14 @@ public final class IDEA extends BlockCipher {
         makeKeyArray();
         String finalKey="";
         String newKey;
-      for (int aKeyArray : keyArray) {
-        newKey = Integer.toBinaryString(aKeyArray);
-        while (newKey.length() < 8) {
-          newKey = "0" + newKey;
+        for (int i=0;i<keyArray.length;i++) {
+            newKey = Integer.toBinaryString(keyArray[i]);
+            while (newKey.length() < 8) {
+                newKey = "0" + newKey;
+            }
+            System.out.println("newKey = " + newKey);
+            finalKey=finalKey.concat(newKey);
         }
-        System.out.println("newKey = " + newKey);
-        finalKey = finalKey.concat(newKey);
-      }
         System.out.println("FinalKey = " + finalKey);
 
         // make reverseRoundkey need to moved to deciper one block or smothing like that maybe flag?
@@ -335,18 +339,18 @@ public final class IDEA extends BlockCipher {
         makeKeyArray();
         String finalKey="";
         String newKey;
-      for (int aKeyArray : keyArray) {
-        newKey = Integer.toBinaryString(aKeyArray);
-        while (newKey.length() < 8) {
-          newKey = "0" + newKey;
+        for (int i=0;i<keyArray.length;i++) {
+            newKey = Integer.toBinaryString(keyArray[i]);
+            while (newKey.length() < 8) {
+                newKey = "0" + newKey;
+            }
+            System.out.println("newKey = " + newKey);
+            finalKey=finalKey.concat(newKey);
         }
-        System.out.println("newKey = " + newKey);
-        finalKey = finalKey.concat(newKey);
-      }
         System.out.println("FinalKey = " + finalKey);
         // runden key int key als string haben, dann entsprechend zyklisch shiften als string , dann den key zerschneiden und in int parsen.
 
-      //need to split the long key into round keys, maybe i shall move this into a different function
+        //need to split the long key into round keys, maybe i shall move this into a different function
 
         int bs;
         boolean even=false;
@@ -520,11 +524,7 @@ public final class IDEA extends BlockCipher {
 
         System.out.println("FINAL PART = " + parts[0]);
 
-
-
         return parts;
-
-
 
     }
 
@@ -650,20 +650,18 @@ public final class IDEA extends BlockCipher {
      * @return inverse
      */
     private int inverse(int input){
-        return BigInteger.valueOf(input).modInverse(BigInteger.valueOf(MAX_16 + 1)).intValue();
-        //int n=MAX_16+1;
+
+
+        BigInteger bi1, bi2, bi3;
+        bi1= new BigInteger(Integer.toString(input));
+        bi2= new BigInteger(Integer.toString(MAX_16+1));
+        int n=MAX_16+1;
+        System.out.println("GCD = " + bi1.gcd(bi2));
+        bi3 = bi1.modInverse(bi2);
+
         /*
-        int g0,g1,g2;
-        int u0,u1,u2;
-        int v0,v1,v2;
-        g0=n;
-        g1=input;
-        u0=1;
-        u1=0;
-        v0=0;
-        v1=1;
-        */
-        /*
+
+
         int g[]=new int[4];
         int u[]=new int[4];
         int v[]=new int[4];
@@ -687,7 +685,8 @@ public final class IDEA extends BlockCipher {
         }
         int x=v[im1];
         return (x>0) ? x : (x+MAX_16+1);
-        */
+     */
+        return bi3.intValue();
     }
     /**
      * zyklischer shift um 25 positionen
@@ -708,18 +707,6 @@ public final class IDEA extends BlockCipher {
 
     }
 
-    private boolean isKeyValid(String key) {
-        if (key.length() != 16) {
-            return false;
-        }
-        for (char c : key.toCharArray()) {
-            if (c < 33 || c > 176) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     /**
      * Erzeugt einen neuen Schlüssel.
      *
@@ -727,24 +714,8 @@ public final class IDEA extends BlockCipher {
      * @see #writeKey writeKey
      */
     public void makeKey() {
-        System.out.println("Soll der Key automatisch generiert werden?");
-        Scanner scanner = new Scanner(System.in);
-        if (scanner.nextLine().equalsIgnoreCase("nein")) {
-            String inputKey = "";
-            do {
-                System.out.println("Geben Sie einen 16 Zeichen langen ASCII String ein.");
-                inputKey = scanner.nextLine();
-            } while (!isKeyValid(inputKey));
-            myKey = inputKey;
-        } else {
-            StringBuilder stringBuilder = new StringBuilder(16);
-            for (int i = 0; i < 16; i++) {
-                stringBuilder.append((char) (Math.random() * 94 + 33));
-            }
-            myKey = stringBuilder.toString();
-        }
 
-        System.out.printf("Der Key ist: \"%s\"%n", myKey);
+        System.out.println("Dummy für die Schlüsselerzeugung.");
     }
 
     /**
@@ -764,9 +735,6 @@ public final class IDEA extends BlockCipher {
             e.printStackTrace();
             System.exit(1);
         }
-        if (!isKeyValid(myKey)) {
-            System.err.printf("Der Key ist: \"%s\" ist invalid %n", myKey);
-        }
     }
 
     /**
@@ -777,16 +745,6 @@ public final class IDEA extends BlockCipher {
      * @see #readKey readKey
      */
     public void writeKey(BufferedWriter key) {
-        try {
-            key.write(myKey);
 
-            key.newLine();
-            key.close();
-        } catch (IOException e) {
-            System.out.println("Abbruch: Fehler beim Schreiben oder Schließen der "
-                + "Schlüsseldatei.");
-            e.printStackTrace();
-            System.exit(1);
-        }
     }
 }
