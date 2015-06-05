@@ -41,6 +41,9 @@ public final class IDEA extends BlockCipher {
     int[] keyArray = new int[16];
     int[] cbc= new int[4];
     boolean cbcMode=false;
+    boolean roundKeysSet=false;
+    int roundKeys[][] = new int[9][6]; // m n
+    int roundKeysReverse[][] = new int[9][6]; // m n
     /**
      * Entschlüsselt den durch den FileInputStream <code>ciphertext</code>
      * gegebenen Chiffretext und schreibt den Klartext in den FileOutputStream
@@ -122,6 +125,145 @@ public final class IDEA extends BlockCipher {
         System.out.println("par : " + foo);
 */
 
+
+
+        // LETS GO
+
+
+        // READ KEY ?
+        makeKeyArray();
+        String finalKey="";
+        String newKey;
+        for (int i=0;i<keyArray.length;i++) {
+            newKey = Integer.toBinaryString(keyArray[i]);
+            while (newKey.length() < 8) {
+                newKey = "0" + newKey;
+            }
+            System.out.println("newKey = " + newKey);
+            finalKey=finalKey.concat(newKey);
+        }
+        System.out.println("FinalKey = " + finalKey);
+
+        // make reverseRoundkey need to moved to deciper one block or smothing like that maybe flag?
+
+        //makeRoundKeysReverse(key);
+
+
+        // start with this R_Keys like before
+
+        int bs;
+        boolean even=false;
+        String block="";
+        String secoundBytePart="";
+
+
+        int[] chiffretextInt=new int[4];
+        int[] cleartextInt=new int[4];
+        int c=0;
+        try{
+            while ((bs = ciphertext.read()) != -1) {
+                //bs=(byte)cleartext.read();
+                System.out.println("Eingelesen aus Cipher = " + bs);
+                if (even){
+                    secoundBytePart=Integer.toBinaryString(bs);
+                    // by default there are no missing leading zeros or should
+                    while (secoundBytePart.length() < 8) {
+                        secoundBytePart = "0" + secoundBytePart;
+                        System.out.println("BUMP IT UP");
+                    }
+
+                    block=block+secoundBytePart;
+                    chiffretextInt[c]=Integer.parseInt(block, 2);
+                    c++;
+                    even=false;
+                    if(c==4){
+                        // CBC
+                        //getRandomString 64bit
+                        // need to be changed
+                        cbc[0]=0;
+                        cbc[1]=0;
+                        cbc[2]=0;
+                        cbc[3]=0;
+
+
+                        //split into 16 bit strings
+
+
+                        if(cbcMode){
+                            chiffretextInt[0]=xor(chiffretextInt[0],cbc[0]);
+                            chiffretextInt[1]=xor(chiffretextInt[1],cbc[1]);
+                            chiffretextInt[2]=xor(chiffretextInt[2],cbc[2]);
+                            chiffretextInt[3]=xor(chiffretextInt[3],cbc[3]);
+                        }
+                        // CBC_END
+                        cleartextInt=enchiperOneBlock(finalKey,chiffretextInt,true);
+                        cbc=cleartextInt;
+                        //WRITE
+                        String strOut="";
+                        for (int i=0;i<4;i++) {
+                            strOut = Integer.toBinaryString(cleartextInt[i]);
+                            while (strOut.length() < 16) {
+                                strOut = "0" + strOut;
+                            }
+                            System.out.println("out teil 1 = " + Integer.parseInt(strOut.substring(0,8), 2));
+                            System.out.println("out teil 2 = " + (Integer.parseInt(strOut.substring(8,16), 2)));
+                            cleartext.write(Integer.parseInt(strOut.substring(0,8), 2));
+                            cleartext.write(Integer.parseInt(strOut.substring(8, 16), 2));
+                        }
+
+                        //WRITE_END
+                        c=0;
+                    }
+                }else{
+                    block=Integer.toBinaryString(bs);
+                    even=true;
+                }
+            }
+            // nun auffüllen mit leerzeichen;
+            if(c!=0) {
+                System.out.println("restblock betreten  " + c);
+                while (c < 4) {
+                    if (even) {
+                        block = block + "00000000";
+                        chiffretextInt[c] = Integer.parseInt(block, 2);
+                        c++;
+                        even = false;
+                    } else {
+                        block = "0000000000000000";
+                        chiffretextInt[c] = Integer.parseInt(block, 2);
+                        c++;
+                    }
+                }
+                cleartextInt = enchiperOneBlock(finalKey, chiffretextInt,true);
+
+            // no need for cbc, its the last block.!
+            //WRITE
+            String strOut="";
+            for (int i=0;i<4;i++) {
+                strOut = Integer.toBinaryString(chiffretextInt[i]);
+                while (strOut.length() < 16) {
+                    strOut = "0" + strOut;
+                    System.out.println("TRIGGER_DEC");
+                }
+                cleartext.write(Integer.parseInt(strOut.substring(0, 8), 2));
+                cleartext.write(Integer.parseInt(strOut.substring(8, 16), 2));
+            }
+            }
+            /*
+            ciphertext.write(chiffretextInt[0]);
+            ciphertext.write(chiffretextInt[1]);
+            ciphertext.write(chiffretextInt[2]);
+            ciphertext.write(chiffretextInt[3]);
+            */
+        }catch (IOException e){
+            System.exit(1);
+        }
+
+
+        // ###CP END###
+
+
+        // WHERE IS CBC?
     }
 
     /**
@@ -170,6 +312,9 @@ public final class IDEA extends BlockCipher {
     }
 
 
+
+    private void splitKey(){}
+
     /**
      *
      */
@@ -183,16 +328,14 @@ public final class IDEA extends BlockCipher {
      */
     public void encipher(FileInputStream cleartext, FileOutputStream ciphertext) {
 
-        makeKeyArray();
+
         System.out.println("Starte encipher methode mit key = " + myKey);
         System.out.println("Starte encipher methode mit key = " + keyArray[0]);
         // need to get leading zeroes
 
-        int tester;
-        tester=mul(50116,49400);
-        // this could be moved to an other function like makeKey()
-        System.out.println(tester);
 
+
+        makeKeyArray();
         String finalKey="";
         String newKey;
         for (int i=0;i<keyArray.length;i++) {
@@ -220,7 +363,7 @@ public final class IDEA extends BlockCipher {
         try{
             while ((bs = cleartext.read()) != -1) {
                 //bs=(byte)cleartext.read();
-                System.out.println("bs = " + bs);
+                System.out.println("Eingelesen aus clearText (bs) = " + bs);
                 if (even){
                     secoundBytePart=Integer.toBinaryString(bs);
                     while (secoundBytePart.length() < 8) {
@@ -250,7 +393,8 @@ public final class IDEA extends BlockCipher {
                             cleartextInt[3]=xor(cleartextInt[3],cbc[3]);
                         }
                         // CBC_END
-                        chiffretextInt=enchiperOneBlock(finalKey,cleartextInt);
+                        chiffretextInt=enchiperOneBlock(finalKey,cleartextInt,false);
+                        cbc=chiffretextInt;
                         //WRITE
                         String strOut="";
                         for (int i=0;i<4;i++) {
@@ -258,8 +402,8 @@ public final class IDEA extends BlockCipher {
                             while (strOut.length() < 16) {
                                 strOut = "0" + strOut;
                             }
-                            System.out.println("out teil 1" + Integer.parseInt(strOut.substring(0,8), 2));
-                            System.out.println("out teil 2" + (Integer.parseInt(strOut.substring(8,16), 2)));
+                            System.out.println("out teil 1 = " + Integer.parseInt(strOut.substring(0,8), 2));
+                            System.out.println("out teil 2 = " + (Integer.parseInt(strOut.substring(8,16), 2)));
                             ciphertext.write(Integer.parseInt(strOut.substring(0,8), 2));
                             ciphertext.write(Integer.parseInt(strOut.substring(8,16), 2));
                         }
@@ -283,19 +427,22 @@ public final class IDEA extends BlockCipher {
 
             }
             // nun auffüllen mit leerzeichen;
-            while (c<4) {
-                if (even) {
-                    block=block+"00000000";
-                    cleartextInt[c]=Integer.parseInt(block, 2);
-                    c++;
-                    even=false;
-                }else{
-                    block="0000000000000000";
-                    cleartextInt[c]=Integer.parseInt(block, 2);
-                    c++;
+            if(c!=0) {
+                while (c < 4) {
+                    if (even) {
+                        block = block + "00000000";
+                        cleartextInt[c] = Integer.parseInt(block, 2);
+                        c++;
+                        even = false;
+                    } else {
+                        block = "0000000000000000";
+                        cleartextInt[c] = Integer.parseInt(block, 2);
+                        c++;
+                    }
                 }
-            }
-            chiffretextInt=enchiperOneBlock(finalKey,cleartextInt);
+                chiffretextInt = enchiperOneBlock(finalKey, cleartextInt,false);
+
+            // no need for cbc, its the last block.!
             //WRITE
             String strOut="";
             for (int i=0;i<4;i++) {
@@ -305,6 +452,7 @@ public final class IDEA extends BlockCipher {
                 }
                 ciphertext.write(Integer.parseInt(strOut.substring(0,8), 2));
                 ciphertext.write(Integer.parseInt(strOut.substring(8,16), 2));
+            }
             }
             /*
             ciphertext.write(chiffretextInt[0]);
@@ -328,11 +476,15 @@ public final class IDEA extends BlockCipher {
     /**
      * Enchiper one block
      */
-    private int[] enchiperOneBlock(String key,int[] parts){
+    private int[] enchiperOneBlock(String key,int[] parts,boolean reverse){
         //if(parts.length!=4)throw E;
        // System.out.println("Toller key mit lange = "+ key.length());
 
-        int roundKeys[][]=makeRoundKeys(key);
+        if(!reverse){
+            int roundKeys[][] = makeRoundKeys(key);
+        }else{
+            int roundKeys[][] = makeRoundKeysReverse(key);
+        }
         // ive got my Keys
         //int rK[]=roundKeys[0];
 
@@ -415,38 +567,128 @@ public final class IDEA extends BlockCipher {
         return out;
     }
 
+    /**
+     * make the Round keys and save it to a global var array
+     * it just needed once so there is a flag but should be moved out of this flag sooner than later cause its an unnessary (legacy) call
+     * NOTIE: the keys [8][4/5] are NULL
+     * @param key the key which is the base for the round keys
+     * @return the roundkey array just to make sure its legacy
+     */
+
     private int[][] makeRoundKeys(String key){
         // make key parts
-        int c=0;
-        int n=0;
-        int m=0;
+        if(!roundKeysSet) {
+            int c = 0;
+            int n = 0;
+            int m = 0;
 
-        int roundKeys[][]=new int[9][6]; // m n
-        while (m<8){
-            if (c>=8){
-                key=zykShift(key);
-                c=0;
+
+            while (m < 8) {
+                if (c >= 8) {
+                    key = zykShift(key);
+                    c = 0;
+                }
+                if (n < 6) {
+                    // System.out.println("Toller key mit lange = "+ key.length());
+                    roundKeys[m][n] = Integer.parseInt(key.substring(c * 16, ((c + 1) * 16) - 1), 2);
+                    n++;
+                    c++;
+                } else {
+                    n = 0;
+                    m++;
+                }
             }
-            if(n<6){
-               // System.out.println("Toller key mit lange = "+ key.length());
-                roundKeys[m][n]=Integer.parseInt(key.substring(c*16,((c+1)*16)-1),2);
+            n = 0;
+            while (n < 4) {
+                roundKeys[8][n] = Integer.parseInt(key.substring(c * 16, (c + 1) * 16), 2);
                 n++;
                 c++;
-            }else {
-                n=0;
-                m++;
             }
         }
-        n=0;
-        while(n<4) {
-            roundKeys[8][n] = Integer.parseInt(key.substring(c * 16, (c + 1) * 16), 2);
-            n++;
-            c++;
-        }
-
+        roundKeysSet=true;
         return roundKeys;
     }
 
+    private int[][] makeRoundKeysReverse(String key){
+
+        if(!roundKeysSet){
+            makeRoundKeys(key);
+        }
+
+        //go try hard
+
+        roundKeysReverse[0][0]=inverse(roundKeys[8][0]);
+        roundKeysReverse[0][1]=minusKey(roundKeys[8][1]);
+        roundKeysReverse[0][2]=minusKey(roundKeys[8][2]);
+        roundKeysReverse[0][3]=inverse(roundKeys[8][3]);
+        roundKeysReverse[0][4]=roundKeys[7][4];
+        roundKeysReverse[0][5]=roundKeys[7][5];
+
+        int r=1; // =2 <=7
+        while(r<7){
+            roundKeysReverse[r][0]=inverse(roundKeys[8-r][0]);
+            roundKeysReverse[r][1]=minusKey(roundKeys[8 - r][2]);
+            roundKeysReverse[r][2]=minusKey(roundKeys[8-r][1]);
+            roundKeysReverse[r][3]=inverse(roundKeys[8-r][3]);
+            roundKeysReverse[r][4]=roundKeys[7-r][4];
+            roundKeysReverse[r][5]=roundKeys[7-r][5];
+            r++;
+        }
+        roundKeysReverse[8][0]=inverse(roundKeys[0][0]);
+        roundKeysReverse[8][1]=minusKey(roundKeys[0][1]);
+        roundKeysReverse[8][2]=minusKey(roundKeys[0][2]);
+        roundKeysReverse[8][3]=inverse(roundKeys[0][3]);
+
+        return roundKeysReverse;
+    }
+
+    private int minusKey(int input){
+        int out=(MAX_16-input)%MAX_16;
+        return out;
+    }
+    /**
+     * algo 3.3
+     * @param input a
+     * @return inverse
+     */
+    private int inverse(int input){
+
+        int n=MAX_16+1;
+        /*
+        int g0,g1,g2;
+        int u0,u1,u2;
+        int v0,v1,v2;
+        g0=n;
+        g1=input;
+        u0=1;
+        u1=0;
+        v0=0;
+        v1=1;
+        */
+        int g[]=new int[4];
+        int u[]=new int[4];
+        int v[]=new int[4];
+        g[0]=MAX_16+1;
+        g[1]=input;
+        u[0]=v[1]=1;
+        u[1]=v[0]=0;
+        int c=0;
+        int i=1;
+        int im1=0;
+        int ip1=2;
+        int y;
+        while(g[i]!=0){
+            y=g[im1]/g[i];
+            g[ip1]=g[im1]-y*g[i];
+            u[ip1]=u[im1]-y*u[i];
+            v[ip1]=v[im1]-y*v[i];
+            i=(i+1)%3;
+            ip1=(i+1)%3;
+            im1=i;
+        }
+        int x=v[im1];
+        return (x>0) ? x : (x+MAX_16+1);
+    }
     /**
      * zyklischer shift um 25 positionen
      */
