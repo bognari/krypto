@@ -736,7 +736,7 @@ public final class IDEA extends BlockCipher {
         } else {
             StringBuilder stringBuilder = new StringBuilder(16);
             for (int i = 0; i < 16; i++) {
-                stringBuilder.append((char) (Math.random() * 94 + 32));
+                stringBuilder.append((char) (Math.random() * 94 + 33));
             }
             myKey = stringBuilder.toString();
         }
@@ -762,7 +762,7 @@ public final class IDEA extends BlockCipher {
             System.exit(1);
         }
         if (!isKeyValid(myKey)) {
-            System.err.printf("Der Key ist: \"%s\" ist nicht valid %n", myKey);
+            System.err.printf("Der Key ist: \"%s\" ist invalid %n", myKey);
         }
     }
 
