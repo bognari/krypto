@@ -36,6 +36,8 @@ import java.util.stream.Collectors;
  */
 public class RunningKey extends Cipher {
 
+
+
     Path key;
 
     Map<String, NGram> uniGram;
