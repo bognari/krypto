@@ -63,50 +63,6 @@ public final class IDEA extends BlockCipher {
         PROFIT
          */
 
-        //JUNK
-
-        // i told u ITS JUNK
-
-
-        // Key kann man als int nehmen und dann shiften .
-
-        // aber blocks ?
-
-        /*
-        short a=197;
-        short b=341;
-        short result = (short) (s1 ^ s2);
-        //Integer.toBinaryString(number) ???
-         */
-
-        /*
-        BitSet test = new BitSet(16);
-
-        BitSet bits1 = new BitSet(16);
-        BitSet bits2 = new BitSet(16);
-
-        for(int i=0; i<16; i++) {
-            if((i%2) == 0) bits1.set(i);
-            if((i%5) != 0) bits2.set(i);
-        }
-        System.out.println("Initial pattern in bits1: ");
-        System.out.println(bits1);
-        System.out.println("\nInitial pattern in bits2: ");
-        System.out.println(bits2);
-
-        bits1.clear();
-        bits1.set(15);
-        System.out.println(bits1);
-        bits2.clear();
-        bits2.set(15);
-        System.out.println(bits2);
-        bits1.or(bits2);
-        System.out.println(bits1);
-
-        System.out.println(bits1.toString().replace(' ','0'));
-
-        */
-
 
         /*
         // #################### REAL STUFF STARTS HERE ##############
@@ -197,7 +153,9 @@ public final class IDEA extends BlockCipher {
                             chiffretextInt[3]=xor(chiffretextInt[3],cbc[3]);
                         }
                         // CBC_END
+                        System.out.println("Bloecke VOR decipher methode = " + chiffretextInt[0] + " [1]= " + chiffretextInt[1] + " [2]= " + chiffretextInt[2] + " [3]= " + chiffretextInt[3]);
                         cleartextInt=enchiperOneBlock(finalKey,chiffretextInt,true);
+                        System.out.println("Bloecke NACH decipher methode = " + cleartextInt[0] + " [1]= " + cleartextInt[1] + " [2]= " + cleartextInt[2] + " [3]= " + cleartextInt[3]);
                         cbc=cleartextInt;
                         //WRITE
                         String strOut="";
@@ -206,8 +164,8 @@ public final class IDEA extends BlockCipher {
                             while (strOut.length() < 16) {
                                 strOut = "0" + strOut;
                             }
-                            System.out.println("out teil 1 = " + Integer.parseInt(strOut.substring(0,8), 2));
-                            System.out.println("out teil 2 = " + (Integer.parseInt(strOut.substring(8,16), 2)));
+                            System.out.println("out teil 1 as int = " + Integer.parseInt(strOut.substring(0,8), 2));
+                            System.out.println("out teil 2 as int = " + (Integer.parseInt(strOut.substring(8,16), 2)));
                             cleartext.write(Integer.parseInt(strOut.substring(0,8), 2));
                             cleartext.write(Integer.parseInt(strOut.substring(8, 16), 2));
                         }
@@ -470,8 +428,8 @@ public final class IDEA extends BlockCipher {
         // |+| = ADD
         // O. = MUL
 
-        System.out.println("TOLLLLOOOLLOLO   " + chiffretextInt[0]);
-        System.out.println("TOLLLLOOOLLOLO   " + Integer.toBinaryString(chiffretextInt[0]));
+        System.out.println("First letter to chiffre as int   " + chiffretextInt[0]);
+        System.out.println("First letter to chiffre as binaryString   " + Integer.toBinaryString(chiffretextInt[0]));
 
     }
 
@@ -490,22 +448,6 @@ public final class IDEA extends BlockCipher {
         // ive got my Keys
         //int rK[]=roundKeys[0];
 
-/*
-        int test1=49;
-        int test2=52;
-        System.out.println(test1);
-        System.out.println(test2);
-        System.out.println(mul(test1,test2));
-        System.out.println(add(test1, test2));
-        System.out.println(xor(test1, test2));
-
-
-        System.out.println(parts[0]);
-        System.out.println(parts[1]);
-        System.out.println(parts[2]);
-        System.out.println(parts[3]);
-        */
-
 
 
         int c=0;
@@ -520,9 +462,9 @@ public final class IDEA extends BlockCipher {
             System.out.println(parts[3]);
             */
         }
-        parts=makeFinalRound(roundKeys[8],parts);
+        parts = makeFinalRound(roundKeys[8],parts);
 
-        System.out.println("FINAL PART = " + parts[0]);
+       // System.out.println("FINAL PART = " + parts[0]);
 
         return parts;
 
@@ -656,36 +598,8 @@ public final class IDEA extends BlockCipher {
         bi1= new BigInteger(Integer.toString(input));
         bi2= new BigInteger(Integer.toString(MAX_16+1));
         int n=MAX_16+1;
-        System.out.println("GCD = " + bi1.gcd(bi2));
+       // System.out.println("GCD = " + bi1.gcd(bi2));
         bi3 = bi1.modInverse(bi2);
-
-        /*
-
-
-        int g[]=new int[4];
-        int u[]=new int[4];
-        int v[]=new int[4];
-        g[0]=MAX_16+1;
-        g[1]=input;
-        u[0]=v[1]=1;
-        u[1]=v[0]=0;
-        int c=0;
-        int i=1;
-        int im1=0;
-        int ip1=2;
-        int y;
-        while(g[i]!=0){
-            y=g[im1]/g[i];
-            g[ip1]=g[im1]-y*g[i];
-            u[ip1]=u[im1]-y*u[i];
-            v[ip1]=v[im1]-y*v[i];
-            i=(i+1)%3;
-            ip1=(i+1)%3;
-            im1=i;
-        }
-        int x=v[im1];
-        return (x>0) ? x : (x+MAX_16+1);
-     */
         return bi3.intValue();
     }
     /**
