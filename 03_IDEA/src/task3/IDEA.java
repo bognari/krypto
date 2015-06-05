@@ -564,7 +564,7 @@ public final class IDEA extends BlockCipher {
         roundKeysReverse[0][4]=roundKeys[7][4];
         roundKeysReverse[0][5]=roundKeys[7][5];
 
-        int r=1; // =2 <=7
+        int r=1; // =2 <=7 .
         while(r<=7){
             System.out.println("round = " + r);
             roundKeysReverse[r][0]=inverse(roundKeys[8-r][0]);
