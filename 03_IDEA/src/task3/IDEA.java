@@ -12,15 +12,11 @@
 
 package task3;
 
+import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
+
 import java.io.*;
 import java.math.BigInteger;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.StringTokenizer;
-
-import de.tubs.cs.iti.jcrypt.chiffre.BlockCipher;
+import java.util.Scanner;
 
 /**
  * Dummy-Klasse für den International Data Encryption Algorithm (IDEA).
@@ -461,7 +457,7 @@ public final class IDEA extends BlockCipher {
             System.out.println(parts[3]);
             */
         }
-        parts = makeFinalRound(myRoundKeys[8],parts);
+        parts = makeFinalRound(myRoundKeys[8], parts);
 
        // System.out.println("FINAL PART = " + parts[0]);
 
@@ -622,6 +618,18 @@ public final class IDEA extends BlockCipher {
 
     }
 
+    private boolean isKeyValid(String key) {
+        if (key.length() != 16) {
+            return false;
+        }
+        for (char c : key.toCharArray()) {
+            if (c < 33 || c > 176) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Erzeugt einen neuen Schlüssel.
      *
@@ -629,8 +637,24 @@ public final class IDEA extends BlockCipher {
      * @see #writeKey writeKey
      */
     public void makeKey() {
+        System.out.println("Soll der Key automatisch generiert werden?");
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.nextLine().equalsIgnoreCase("nein")) {
+            String inputKey = "";
+            do {
+                System.out.println("Geben Sie einen 16 Zeichen langen ASCII String ein.");
+                inputKey = scanner.nextLine();
+            } while (!isKeyValid(inputKey));
+            myKey = inputKey;
+        } else {
+            StringBuilder stringBuilder = new StringBuilder(16);
+            for (int i = 0; i < 16; i++) {
+                stringBuilder.append((char) (Math.random() * 94 + 33));
+            }
+            myKey = stringBuilder.toString();
+        }
 
-        System.out.println("Dummy für die Schlüsselerzeugung.");
+        System.out.printf("Der Key ist: \"%s\"%n", myKey);
     }
 
     /**
@@ -646,9 +670,12 @@ public final class IDEA extends BlockCipher {
             key.close();
         } catch (IOException e) {
             System.err.println("Abbruch: Fehler beim Lesen oder Schließen der "
-                    + "Schlüsseldatei.");
+                + "Schlüsseldatei.");
             e.printStackTrace();
             System.exit(1);
+        }
+        if (!isKeyValid(myKey)) {
+            System.err.printf("Der Key ist: \"%s\" ist invalid %n", myKey);
         }
     }
 
@@ -660,6 +687,17 @@ public final class IDEA extends BlockCipher {
      * @see #readKey readKey
      */
     public void writeKey(BufferedWriter key) {
+        try {
+            key.write(myKey);
 
+            key.newLine();
+            key.close();
+        } catch (IOException e) {
+            System.out.println("Abbruch: Fehler beim Schreiben oder Schließen der "
+                + "Schlüsseldatei.");
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }
+
