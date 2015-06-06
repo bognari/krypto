@@ -257,21 +257,19 @@ public final class IDEA extends BlockCipher {
         inputB=inputB==0?MAX_16:inputB;
        // return ((inputA*inputB)%(MAX_16+1))==0?MAX_16:((inputA*inputB)%(MAX_16+1));
         //TODO nur long wenn notwendig machen
-        long fire=(long)((long)inputA*(long)inputB);
+        /*long fire=(long)((long)inputA*(long)inputB);
         int hold=(int)(fire%(MAX_16+1));
         if(hold==0){
             return MAX_16;
         }
-        return hold;
+        return hold;*/
+
+        return BigInteger.valueOf(inputA).multiply(BigInteger.valueOf(inputB)).mod(BigInteger.valueOf(MAX_16 + 1))
+            .intValue() % MAX_16;
     }
-
-
 
     private void splitKey(){}
 
-    /**
-     *
-     */
     /**
      * Verschlüsselt den durch den FileInputStream <code>cleartext</code>
      * gegebenen Klartext und schreibt den Chiffretext in den FileOutputStream
@@ -434,7 +432,7 @@ public final class IDEA extends BlockCipher {
     private int[] enchiperOneBlock(String key,int[] parts,boolean reverse){
         //if(parts.length!=4)throw E;
        // System.out.println("Toller key mit lange = "+ key.length());
-        int myRoundKeys[][]=new int[9][6];
+        int myRoundKeys[][];
         if(!reverse){
             myRoundKeys = makeRoundKeys(key);
         }else{
@@ -494,10 +492,10 @@ public final class IDEA extends BlockCipher {
 
 
         int out[]=new int[4];
-        out[0]=mul(a,i);
-        out[1]=mul(c,i);
-        out[2]=mul(b,j);
-        out[3]=mul(d,j);
+        out[0]=xor(a, i);
+        out[1]=xor(c, i);
+        out[2]=xor(b, j);
+        out[3]=xor(d,j);
 
         return out;
     }
@@ -525,7 +523,7 @@ public final class IDEA extends BlockCipher {
                 }
                 if (n < 6) {
                     // System.out.println("Toller key mit lange = "+ key.length());
-                    roundKeys[m][n] = Integer.parseInt(key.substring(c * 16, ((c + 1) * 16) - 1), 2);
+                    roundKeys[m][n] = Integer.parseInt(key.substring(c * 16, ((c + 1) * 16)), 2);
                     n++;
                     c++;
                 } else {
@@ -589,13 +587,9 @@ public final class IDEA extends BlockCipher {
      * @return inverse
      */
     private int inverse(int input){
-
-
         BigInteger bi1, bi2, bi3;
         bi1= new BigInteger(Integer.toString(input));
         bi2= new BigInteger(Integer.toString(MAX_16+1));
-        int n=MAX_16+1;
-       // System.out.println("GCD = " + bi1.gcd(bi2));
         bi3 = bi1.modInverse(bi2);
         return bi3.intValue();
     }
@@ -613,9 +607,6 @@ public final class IDEA extends BlockCipher {
         for(int i=0;i<16;i++){
             keyArray[i]=(int)myKey.charAt(i);
         }
-
-
-
     }
 
     private boolean isKeyValid(String key) {
