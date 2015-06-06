@@ -325,6 +325,7 @@ public final class IDEA extends BlockCipher {
                     cleartextInt[c]=Integer.parseInt(block, 2);
                     c++;
                     even=false;
+                    System.out.println("before c ==4 " );
                     if(c==4){
                         // CBC
                             //getRandomString 64bit
@@ -345,7 +346,11 @@ public final class IDEA extends BlockCipher {
                             cleartextInt[3]=xor(cleartextInt[3],cbc[3]);
                         }
                         // CBC_END
+                      //  System.out.println("LETTT IT GO " + chiffretextInt[0]);
+                        System.out.println("Chiffre Bloecke VOR decipher methode = " + chiffretextInt[0] + " [1]= " + chiffretextInt[1] + " [2]= " + chiffretextInt[2] + " [3]= " + chiffretextInt[3]);
+                        System.out.println("Bloecke VOR decipher methode = " + cleartextInt[0] + " [1]= " + cleartextInt[1] + " [2]= " + cleartextInt[2] + " [3]= " + cleartextInt[3]);
                         chiffretextInt=enchiperOneBlock(finalKey,cleartextInt,false);
+                        System.out.println("Bloecke VOR decipher methode = " + chiffretextInt[0] + " [1]= " + chiffretextInt[1] + " [2]= " + chiffretextInt[2] + " [3]= " + chiffretextInt[3]);
                         cbc=chiffretextInt;
                         //WRITE
                         String strOut="";
@@ -393,6 +398,7 @@ public final class IDEA extends BlockCipher {
                         c++;
                     }
                 }
+            //    System.out.println("Before enipher im pump block " + chiffretextInt[0]);
                 chiffretextInt = enchiperOneBlock(finalKey, cleartextInt,false);
 
             // no need for cbc, its the last block.!
@@ -469,7 +475,7 @@ public final class IDEA extends BlockCipher {
         out[0]=mul(parts[0],roundKey[0]);
         out[1]=add(parts[1],roundKey[1]);
         out[2]=add(parts[2],roundKey[2]);
-        out[3]=mul(parts[3],roundKey[3]);
+        out[3]=mul(parts[3], roundKey[3]);
         return out;
     }
 
