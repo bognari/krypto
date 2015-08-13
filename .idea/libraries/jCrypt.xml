@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="jCrypt">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/jCrypt" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/jCrypt/doc/javadoc" />
+    </JAVADOC>
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/jCrypt" recursive="false" />
+  </library>
+</component>
