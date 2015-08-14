@@ -152,7 +152,7 @@ public final class IDEA extends BlockCipher {
         }
     }
 
-    private void makeDechipherKey() {
+    private void makeDecipherKey() {
         dk = new BigInteger[9][6];
         dk[0][0] = k[8][0].modInverse(MUL_MOD);
         dk[0][1] = MOD.subtract(k[8][1]).mod(MOD);
@@ -186,7 +186,7 @@ public final class IDEA extends BlockCipher {
      */
     public void decipher(FileInputStream ciphertext, FileOutputStream cleartext) {
         makeEnchipherKey();
-        makeDechipherKey();
+        makeDecipherKey();
 
         k = dk;
 
