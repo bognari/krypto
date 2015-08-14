@@ -78,7 +78,7 @@ public final class IDEA extends BlockCipher {
 
     private static void upperHalf(BigInteger[] m, BigInteger[] k) {
         assert m.length == 4;
-        assert k.length == 8;
+        assert k.length == 6;
 
         m[0] = mul(m[0], k[0]);
         m[1] = add(m[1], k[1]);
@@ -88,7 +88,7 @@ public final class IDEA extends BlockCipher {
 
     private static void lowerHalf(BigInteger[] m, BigInteger[] k) {
         assert m.length == 4;
-        assert k.length == 8;
+        assert k.length == 6;
 
         BigInteger t1 = xor(m[0], m[2]);
         BigInteger t2 = xor(m[1], m[3]);
@@ -133,14 +133,14 @@ public final class IDEA extends BlockCipher {
         BigInteger key = string2BigInt(myKey);
 
         for (int i = 0; i < 7; i++) {
-            temp[i * 8 + 0] = key.and(MAT_16BIT_8).shiftRight(16 * 7);
-            temp[i * 8 + 1] = key.and(MAT_16BIT_7).shiftRight(16 * 6);
-            temp[i * 8 + 2] = key.and(MAT_16BIT_6).shiftRight(16 * 5);
-            temp[i * 8 + 3] = key.and(MAT_16BIT_5).shiftRight(16 * 4);
-            temp[i * 8 + 4] = key.and(MAT_16BIT_4).shiftRight(16 * 3);
-            temp[i * 8 + 5] = key.and(MAT_16BIT_3).shiftRight(16 * 2);
-            temp[i * 8 + 6] = key.and(MAT_16BIT_2).shiftRight(16 * 1);
-            temp[i * 8 + 7] = key.and(MAT_16BIT_1).shiftRight(16 * 0);
+            temp[(i * 8)] = key.and(MAT_16BIT_8).shiftRight(16 * 7).mod(MOD);
+            temp[i * 8 + 1] = key.and(MAT_16BIT_7).shiftRight(16 * 6).mod(MOD);
+            temp[i * 8 + 2] = key.and(MAT_16BIT_6).shiftRight(16 * 5).mod(MOD);
+            temp[i * 8 + 3] = key.and(MAT_16BIT_5).shiftRight(16 * 4).mod(MOD);
+            temp[i * 8 + 4] = key.and(MAT_16BIT_4).shiftRight(16 * 3).mod(MOD);
+            temp[i * 8 + 5] = key.and(MAT_16BIT_3).shiftRight(16 * 2).mod(MOD);
+            temp[i * 8 + 6] = key.and(MAT_16BIT_2).shiftRight(16).mod(MOD);
+            temp[i * 8 + 7] = key.and(MAT_16BIT_1).mod(MOD);
 
             key = key.shiftLeft(25).add(key.and(MAT_25BIT)).and(MAT_128BIT);
         }
@@ -148,9 +148,7 @@ public final class IDEA extends BlockCipher {
         k = new BigInteger[9][6];
 
         for (int r = 0; r < 9; r++) {
-            for (int i = 0; i < 6; i++) {
-                k[r][i] = temp[r * 6 + i];
-            }
+            System.arraycopy(temp, r * 6, k[r], 0, 6);
         }
     }
 
@@ -255,7 +253,7 @@ public final class IDEA extends BlockCipher {
             m[0] = clear.and(MAT_16BIT_4).shiftRight(48).and(MAT_16BIT_1);
             m[1] = clear.and(MAT_16BIT_3).shiftRight(32).and(MAT_16BIT_1);
             m[2] = clear.and(MAT_16BIT_2).shiftRight(16).and(MAT_16BIT_1);
-            m[3] = clear.and(MAT_16BIT_1).and(MAT_16BIT_1);
+            m[3] = clear.and(MAT_16BIT_1);
 
             runBlock(m);
 
@@ -306,7 +304,7 @@ public final class IDEA extends BlockCipher {
         System.out.println("Soll der Key automatisch generiert werden?");
         Scanner scanner = new Scanner(System.in);
         if (scanner.nextLine().equalsIgnoreCase("nein")) {
-            String inputKey = "";
+            String inputKey;
             do {
                 System.out.println("Geben Sie einen 16 Zeichen langen ASCII String ein.");
                 inputKey = scanner.nextLine();
