@@ -89,14 +89,19 @@ public final class Fingerprint extends HashFunction {
 
         BigInteger text = new BigInteger(clear.getBytes());
 
-        int bl = text.bitLength();
-        BigInteger cipher = hash(text.xor(text.shiftRight(bl / 2).shiftLeft(bl / 2)), text.shiftRight(bl / 2));
+
+        BigInteger cipher = hash(text);
 
         try {
             ciphertext.write(cipher.toString(16).getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public BigInteger hash(BigInteger m) {
+        int size = m.bitLength();
+        return  hash(m.xor(m.shiftRight(size / 2).shiftLeft(size / 2)), m.shiftRight(size / 2));
     }
 
     /**

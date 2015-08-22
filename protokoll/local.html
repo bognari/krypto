@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Das Verzeichnis ~krypto/protokoll/local/</title>
+</head>
+<body bgcolor="white">
+<h1>Das Verzeichnis ~krypto/protokoll/local/</h1>
+
+<p>
+
+<table border="1" cellpadding="5" cellspacing="3" width="100%">
+    <tr>
+        <th align=left>server.sh</th>
+        <td>Bevor ein Protokoll ausgef&uuml;hrt werden kann, mu&szlig; ein Server gestartet werden, der
+            die Kommunikation zwischen den teilnehmenden Parteien (Clients) gew&auml;hrleistet. Da
+            dieser Server mehrere Protokolle gleichzeitig verwalten kann, braucht nur ein Server pro
+            Host gestartet zu werden.
+            <br>
+            <strong>server.sh</strong> ist ein einfaches
+            Shellscript, welches den Server mit dem erforderlichen vollst&auml;ndigen Klassennamen
+            startet.
+
+        </td>
+    <tr>
+        <th align=left>client.sh</th>
+        <td>Eine .class-Datei, die den Ablauf eines Protokolls beschreibt, wird ausgef&uuml;hrt, indem
+            jede teilnehmende Partei einen Client startet und in einem der sich dann &ouml;ffnenden
+            Eingabefenstern den Namen dieser .class-Datei ausw&auml;hlt.<br>
+            <strong>client.sh</strong> ist ein einfaches Shellscript, welches den Client mit dem
+            erforderlichen vollst&auml;ndigen Klassennamen startet.
+        </td>
+    <tr>
+        <th align=left>Skeleton.java</th>
+        <td>Hierin sind die leeren Methoden <A
+                HREF="docs/de/tubs/cs/iti/krypto/protokoll/Protocol.html#sendFirst()">sendFirst</A> und <A
+                HREF="docs/de/tubs/cs/iti/krypto/protokoll/Protocol.html#receiveFirst()">receiveFirst</A> mit den f&uuml;r
+            das jeweilige
+            Protokoll spezifischen Algorithmen auszuf&uuml;llen. Die Klasse <A
+                    HREF="docs/de/tubs/cs/iti/krypto/protokoll/Communicator.html">Communicator</A> stellt hierf&uuml;r
+            Methoden zur Kommunikation mit den anderen Parteien zur Verf&uuml;gung.
+        </td>
+        <!--
+        <tr>
+          <th align=left>auktionator.java</th>
+          <td>Implementiert in der Methode <A
+          HREF="docs/de/tubs/cs/iti/krypto/protokoll/Protocol.html#sendFirst()">sendFirst</A> den Teil des
+          Auktionators des Auktionsprotokolls 5.5.1.
+          </td>
+        -->
+    <tr>
+        <th align=left>example.java</th>
+        <td>Ein Beispielprotokoll, das als <i>nicht w&ouml;rtlich</i> zu nehmendes Beispiel dienen mag,
+            wie eigene Protokolle anzugehen sind.
+        </td>
+</table>
+
+</body>
+</html>

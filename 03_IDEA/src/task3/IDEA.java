@@ -128,7 +128,7 @@ public final class IDEA extends BlockCipher {
         return integer.and(MAT_128BIT);
     }
 
-    private void makeEnchipherKey() {
+    public void makeEnchipherKey() {
         BigInteger[] temp = new BigInteger[56]; // 52 + 6 = 8 * 7
         BigInteger key = string2BigInt(myKey);
 
@@ -152,7 +152,7 @@ public final class IDEA extends BlockCipher {
         }
     }
 
-    private void makeDecipherKey() {
+    public void makeDecipherKey() {
         dk = new BigInteger[9][6];
         dk[0][0] = k[8][0].modInverse(MUL_MOD);
         dk[0][1] = MOD.subtract(k[8][1]).mod(MOD);
@@ -190,38 +190,44 @@ public final class IDEA extends BlockCipher {
 
         k = dk;
 
-        BigInteger clear;
+        BigInteger chipher;
 
-        BigInteger clear_old = readCipher(ciphertext);
+        BigInteger chipher_old = readCipher(ciphertext);
 
-        while ((clear = readCipher(ciphertext)) != null) {
-            System.out.println("clear = " + clear + " " + clear.bitLength());
+        while ((chipher = readCipher(ciphertext)) != null) {
+            System.out.println("chipher = " + chipher + " " + chipher.bitLength());
 
-            BigInteger[] m = new BigInteger[4];
-            m[0] = clear.and(MAT_16BIT_4).shiftRight(48).and(MAT_16BIT_1);
-            m[1] = clear.and(MAT_16BIT_3).shiftRight(32).and(MAT_16BIT_1);
-            m[2] = clear.and(MAT_16BIT_2).shiftRight(16).and(MAT_16BIT_1);
-            m[3] = clear.and(MAT_16BIT_1).and(MAT_16BIT_1);
+            BigInteger out = d(chipher);
 
-            runBlock(m);
+            out = out.xor(chipher_old);
 
-            BigInteger out = m[0];
-            out = out.shiftLeft(16);
-            out = out.add(m[1]);
-            out = out.shiftLeft(16);
-            out = out.add(m[2]);
-            out = out.shiftLeft(16);
-            out = out.add(m[3]);
-            out = out.and(MAT_64BIT);
-
-            out = out.xor(clear_old);
-
-            clear_old = clear;
+            chipher_old = chipher;
 
             System.out.println("out = " + out + " " + out.bitLength());
 
             writeClear(cleartext, out);
         }
+    }
+
+    public BigInteger d(BigInteger chipher) {
+        BigInteger[] m = new BigInteger[4];
+        m[0] = chipher.and(MAT_16BIT_4).shiftRight(48).and(MAT_16BIT_1);
+        m[1] = chipher.and(MAT_16BIT_3).shiftRight(32).and(MAT_16BIT_1);
+        m[2] = chipher.and(MAT_16BIT_2).shiftRight(16).and(MAT_16BIT_1);
+        m[3] = chipher.and(MAT_16BIT_1).and(MAT_16BIT_1);
+
+        runBlock(m);
+
+        BigInteger out = m[0];
+        out = out.shiftLeft(16);
+        out = out.add(m[1]);
+        out = out.shiftLeft(16);
+        out = out.add(m[2]);
+        out = out.shiftLeft(16);
+        out = out.add(m[3]);
+        out = out.and(MAT_64BIT);
+
+        return out;
     }
 
     /**
@@ -249,22 +255,7 @@ public final class IDEA extends BlockCipher {
 
             System.out.println("clear = " + clear + " " + clear.bitLength());
 
-            BigInteger[] m = new BigInteger[4];
-            m[0] = clear.and(MAT_16BIT_4).shiftRight(48).and(MAT_16BIT_1);
-            m[1] = clear.and(MAT_16BIT_3).shiftRight(32).and(MAT_16BIT_1);
-            m[2] = clear.and(MAT_16BIT_2).shiftRight(16).and(MAT_16BIT_1);
-            m[3] = clear.and(MAT_16BIT_1);
-
-            runBlock(m);
-
-            BigInteger out = m[0];
-            out = out.shiftLeft(16);
-            out = out.add(m[1]);
-            out = out.shiftLeft(16);
-            out = out.add(m[2]);
-            out = out.shiftLeft(16);
-            out = out.add(m[3]);
-            out = out.and(MAT_64BIT);
+            BigInteger out = e(clear);
 
             out_old = out;
 
@@ -272,6 +263,27 @@ public final class IDEA extends BlockCipher {
             
             writeCipher(ciphertext, out);
         }
+    }
+
+    public BigInteger e(BigInteger clear) {
+        BigInteger[] m = new BigInteger[4];
+        m[0] = clear.and(MAT_16BIT_4).shiftRight(48).and(MAT_16BIT_1);
+        m[1] = clear.and(MAT_16BIT_3).shiftRight(32).and(MAT_16BIT_1);
+        m[2] = clear.and(MAT_16BIT_2).shiftRight(16).and(MAT_16BIT_1);
+        m[3] = clear.and(MAT_16BIT_1);
+
+        runBlock(m);
+
+        BigInteger out = m[0];
+        out = out.shiftLeft(16);
+        out = out.add(m[1]);
+        out = out.shiftLeft(16);
+        out = out.add(m[2]);
+        out = out.shiftLeft(16);
+        out = out.add(m[3]);
+        out = out.and(MAT_64BIT);
+
+        return out;
     }
 
     private boolean isKeyValid(String key) {
@@ -357,6 +369,16 @@ public final class IDEA extends BlockCipher {
             e.printStackTrace();
             System.exit(1);
         }
+    }
+
+    public void setKey(BigInteger key) {
+        assert key.bitLength() >= 128;
+        StringBuilder stringBuilder = new StringBuilder();
+        BigInteger MAT_Byte = BigInteger.valueOf(255L);
+        for (int i = 0; i < 16; i++) {
+            stringBuilder.append((char) key.shiftRight(key.bitLength() - 8).and(MAT_Byte).intValue());
+        }
+        myKey = stringBuilder.toString();
     }
 }
 
