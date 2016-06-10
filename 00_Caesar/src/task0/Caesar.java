@@ -11,18 +11,17 @@
 
 package task0;
 
+import de.tubs.cs.iti.jcrypt.chiffre.CharacterMapping;
+import de.tubs.cs.iti.jcrypt.chiffre.Cipher;
+import de.tubs.cs.iti.jcrypt.chiffre.FrequencyTables;
+import de.tubs.cs.iti.jcrypt.chiffre.NGram;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.StringTokenizer;
-
-import de.tubs.cs.iti.jcrypt.chiffre.CharacterMapping;
-import de.tubs.cs.iti.jcrypt.chiffre.Cipher;
-import de.tubs.cs.iti.jcrypt.chiffre.FrequencyTables;
-import de.tubs.cs.iti.jcrypt.chiffre.NGram;
 
 /**
  * Diese Klasse implementiert die Caesar-Chiffre.
@@ -103,9 +102,8 @@ public final class Caesar extends Cipher {
       int greatest = -1;
       // Das bisher häufigste Zeichen.
       int mostFrequented = -1;
-      Iterator<Integer> it = quantities.keySet().iterator();
-      while (it.hasNext()) {
-        currKey = it.next();
+      for (Integer integer : quantities.keySet()) {
+        currKey = integer;
         currValue = quantities.get(currKey);
         if (currValue > greatest) {
           greatest = currValue;

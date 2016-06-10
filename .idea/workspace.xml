@@ -2,188 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7e1d05-cf7f-4db2-b81b-108e474085f2" name="Default" comment="task 6 ungetestet">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/doc-files/classes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/doc-files/must.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/doc-files/ok.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/doc-files/x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/resources/inherit.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/misc/logo_iti.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00_Caesar/00_Caesar.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/01_Vigenere/01_Vigenere.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/01_Vigenere/programmierer_enc.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/02_RunningKey/02_RunningKey.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/03_IDEA/03_IDEA.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/03_IDEA/key.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/03_IDEA/programmierer_dec.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/03_IDEA/programmierer_enc.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/04_ElGamal/04_ElGamal.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/04_ElGamal/key.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/04_ElGamal/key_sig.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/04_ElGamal/programmierer_dec.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/04_ElGamal/programmierer_enc.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/05_Fingerprint/param.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/05_Fingerprint/programmierer_enc.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/allclasses-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/allclasses-noframe.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/constant-values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/BigIntegerUtil.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/BlockCipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/BlockCipherUtil.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/CharacterMapping.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/Chiffre.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/Cipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/FrequencyTables.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/HashFunction.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/Job.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/Launcher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/NGram.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/Signature.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/BigIntegerUtil.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/BlockCipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/BlockCipherUtil.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/CharacterMapping.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/Chiffre.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/Cipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/FrequencyTables.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/HashFunction.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/Job.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/Launcher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/NGram.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/class-use/Signature.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/de/tubs/cs/iti/jcrypt/chiffre/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/deprecated-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/help-doc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/index-all.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/overview-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/overview-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/overview-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/package-list" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/stylesheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task0/Caesar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task0/class-use/Caesar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task0/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task0/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task0/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task0/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task1/Vigenere.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task1/class-use/Vigenere.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task1/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task1/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task1/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task1/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task2/RunningKey.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task2/class-use/RunningKey.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task2/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task2/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task2/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task2/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task3/IDEA.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task3/class-use/IDEA.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task3/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task3/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task3/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task3/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/ElGamalCipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/ElGamalSignature.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/class-use/ElGamalCipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/class-use/ElGamalSignature.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task4/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task5/Fingerprint.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task5/class-use/Fingerprint.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task5/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task5/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task5/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/javadoc/task5/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/misc/overview_student.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/doc/misc/stylesheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/jCrypt.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/00 Caesar makekey.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/01 Caesar encipher mod33.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/02 Caesar decipher mod33.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/03 Caesar encipher mod31.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/04 Caesar decipher mod31.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/05 Caesar break mod31.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/06 Caesar encipher default27_2.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/07 Caesar decipher default27_2.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/08 Caesar break mod27.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/09 Caesar encipher cp1252.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/0A Caesar decipher cp1252.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/0B Caesar break cp1252.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/0C Caesar encipher utf-8-demo.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/0D Caesar decipher utf-8-demo.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/10 Vigenere makekey.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/20 RunningKey makekey.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/30 IDEA makekey.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/40 ElGamalCipher makekey.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/41 ElGamalSignature makekey.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/50 Fingerprint makeparam.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/90 CharacterMapping programmierer.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/91 CharacterMapping utf-8-demo.alph.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/92 FrequencyTables 1-Gramme programmierer.txt.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/93 FrequencyTables 2-Gramme programmierer.txt.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/94 FrequencyTables 3-Gramme programmierer.txt.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jCrypt/launch/95 FrequencyTables 4-Gramme prozess.txt.launch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/allclasses-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/BigIntegerUtils.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/BlockCipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/Charconvert.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/CharconvertException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/Cipher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/Krypto.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/KryptoException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/Tables.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/chiffre/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/Certificate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/Client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/ClientGUI.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/CmdLineClient.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/Communicator.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/Game.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/IClient.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/Protocol.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/ProtocolUtils.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/Server.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/ServerThread.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/TrustedAuthority.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/de/tubs/cs/iti/krypto/protokoll/popUpWindow.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/deprecated-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/help-doc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/index-all.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/overview-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/package-list" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/packages.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/serialized-form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/docs/stylesheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protokoll/index.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/findbugs-idea.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JUnit/JUnit.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JUnit/src/TestCaesar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JUnit/src/TestHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/00_Caesar/.gitignore" afterPath="$PROJECT_DIR$/00_Caesar/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/01_Vigenere/.gitignore" afterPath="$PROJECT_DIR$/01_Vigenere/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_RunningKey/.gitignore" afterPath="$PROJECT_DIR$/02_RunningKey/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/03_IDEA/.gitignore" afterPath="$PROJECT_DIR$/03_IDEA/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/04_ElGamal/.gitignore" afterPath="$PROJECT_DIR$/04_ElGamal/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/05_Fingerprint/.gitignore" afterPath="$PROJECT_DIR$/05_Fingerprint/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/05_Fingerprint/05_Fingerprint.iml" afterPath="$PROJECT_DIR$/05_Fingerprint/05_Fingerprint.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jCrypt/.gitignore" afterPath="$PROJECT_DIR$/jCrypt/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protokoll/Krypto Umgebung Protokoll.iml" afterPath="$PROJECT_DIR$/protokoll/Krypto Umgebung Protokoll.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/00_Caesar/src/task0/Caesar.java" afterPath="$PROJECT_DIR$/00_Caesar/src/task0/Caesar.java" />
     </list>
     <ignored path="krypto.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -195,6 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -204,46 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CmdLineClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protokoll/src/de/tubs/cs/iti/krypto/protokoll/CmdLineClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1605">
-              <caret line="111" column="26" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/00_Caesar/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_Vigenere/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_RunningKey/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
@@ -294,12 +79,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/04_ElGamal/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Caesar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/00_Caesar/src/task0/Caesar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="261" column="25" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Launcher.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/jCrypt/jCrypt.jar!/de/tubs/cs/iti/jcrypt/chiffre/Launcher.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3055">
+              <caret line="524" column="0" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/JUnit/src/TestHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3774#3775#0" expanded="true" />
+                <element signature="e#3846#3847#0" expanded="true" />
+                <element signature="e#3887#3888#0" expanded="true" />
+                <element signature="e#3919#3920#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCaesar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JUnit/src/TestCaesar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -340,6 +175,9 @@
         <option value="$PROJECT_DIR$/02_RunningKey/.gitignore" />
         <option value="$PROJECT_DIR$/jCrypt/.gitignore" />
         <option value="$PROJECT_DIR$/protokoll/.gitignore" />
+        <option value="$PROJECT_DIR$/00_Caesar/src/task0/Caesar.java" />
+        <option value="$PROJECT_DIR$/JUnit/src/TestCaesar.java" />
+        <option value="$PROJECT_DIR$/JUnit/src/TestHelper.java" />
       </list>
     </option>
   </component>
@@ -362,8 +200,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="873" />
+    <option name="width" value="1920" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -390,16 +228,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="krypto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Changed Files">
           <PATH>
@@ -418,6 +246,27 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="krypto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="krypto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protokoll" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches">
         <subPane>
           <PATH>
@@ -428,15 +277,14 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/dict" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -450,11 +298,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/JUnit/src" />
       <recent name="$PROJECT_DIR$/04_ElGamal" />
       <recent name="$PROJECT_DIR$/protokoll" />
       <recent name="$PROJECT_DIR$/jCrypt" />
       <recent name="$PROJECT_DIR$/05_Fingerprint" />
-      <recent name="$PROJECT_DIR$/03_IDEA" />
     </key>
   </component>
   <component name="RunManager" selected="Application.52 Fingerprint verify">
@@ -477,19 +325,11 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
@@ -505,17 +345,9 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -599,25 +431,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="CabalRunConfiguration" factoryName="Haskell">
-      <module name="" />
-      <setting name="executableName" value="" />
-      <setting name="parameters" value="" />
-      <setting name="workingDir" value="" />
-      <environmetVariables />
-      <method />
-    </configuration>
     <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
       <method />
     </configuration>
@@ -638,66 +451,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
-      <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
-      <module name="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
-      <method />
-    </configuration>
-    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -774,37 +527,6 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
-    <configuration default="true" type="JRubyCucumberRunConfigurationType" factoryName="JRuby Cucumber">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-Dforce.jruby.jit=true -Djruby.debug.fullTrace=true" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -869,12 +591,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -891,13 +607,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
-      <setting name="configLocationType" value="CONFIG_FILE" />
-      <setting name="settingsFile" value="" />
-      <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="filePath" />
@@ -911,62 +620,6 @@
       <method />
     </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1069,46 +722,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
-      <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
-      <module name="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <module name="00_Caesar" />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -1143,116 +756,6 @@
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Attests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
@@ -1825,6 +1328,7 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="1" Folder0="$USER_HOME$/Documents/dict" Dictionaries="0" />
   <component name="StatisticProjectComponent">
     <option name="excludeCompilerOutput" value="true" />
     <option name="excludeIdea9ArtifactDirectory" value="true" />
@@ -1864,6 +1368,7 @@
       <workItem from="1445698483531" duration="114000" />
       <workItem from="1445698616085" duration="34000" />
       <workItem from="1465556211021" duration="740000" />
+      <workItem from="1465557137859" duration="6295000" />
     </task>
     <task id="LOCAL-00001" summary="noch mal neu">
       <created>1439477516529</created>
@@ -1918,7 +1423,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71656000" />
+    <option name="totallyTimeSpent" value="77951000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1930,48 +1435,48 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="977" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cabal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2736954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39820743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40229884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="GhcMod" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2739628" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cabal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39820743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="100" y="123" width="1240" height="673" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40229884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="GhcMod" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2031,31 +1536,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/04_ElGamal/schluessel/stephan.secr.public">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/jCrypt/jCrypt.jar!/de/tubs/cs/iti/jcrypt/chiffre/BigIntegerUtil.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="36" column="52" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_Vigenere/src/task1/Vigenere.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="431" column="0" selection-start-line="431" selection-start-column="0" selection-end-line="431" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/00_Caesar/src/task0/Caesar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -2129,13 +1613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/jCrypt/jCrypt.jar!/de/tubs/cs/iti/jcrypt/chiffre/Launcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="523" column="0" selection-start-line="523" selection-start-column="0" selection-end-line="523" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_Vigenere/src/task1/Vigenere.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2203,13 +1680,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/protokoll/classes.jar!/de/tubs/cs/iti/krypto/protokoll/TrustedAuthority.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/protokoll/classes.jar!/de/tubs/cs/iti/krypto/protokoll/TrustedAuthority.class" />
     <entry file="file://$PROJECT_DIR$/protokoll/src/de/tubs/cs/iti/krypto/protokoll/Certificate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2231,13 +1702,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/protokoll/classes.jar!/de/tubs/cs/iti/krypto/protokoll/Protocol.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/protokoll/classes.jar!/de/tubs/cs/iti/krypto/protokoll/Protocol.class" />
     <entry file="file://$PROJECT_DIR$/protokoll/src/de/tubs/cs/iti/krypto/protokoll/Protocol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2296,7 +1761,7 @@
         <state relative-caret-position="1995">
           <caret line="139" column="27" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2330,25 +1795,25 @@
         <state relative-caret-position="4350">
           <caret line="311" column="5" selection-start-line="311" selection-start-column="5" selection-end-line="311" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1257#1258#0" expanded="true" />
-            <element signature="e#1296#1297#0" expanded="true" />
-            <element signature="e#1478#1479#0" expanded="true" />
-            <element signature="e#1505#1506#0" expanded="true" />
-            <element signature="e#8877#8878#0" expanded="true" />
-            <element signature="e#8909#8910#0" expanded="true" />
-            <element signature="e#9101#9102#0" expanded="true" />
-            <element signature="e#9133#9134#0" expanded="true" />
-            <element signature="e#11010#11011#0" expanded="true" />
-            <element signature="e#11042#11043#0" expanded="true" />
-            <element signature="e#11078#11079#0" expanded="true" />
-            <element signature="e#11110#11111#0" expanded="true" />
-            <element signature="e#11161#11162#0" expanded="true" />
-            <element signature="e#11206#11207#0" expanded="true" />
-            <element signature="e#11459#11460#0" expanded="true" />
-            <element signature="e#11500#11501#0" expanded="true" />
-            <element signature="e#11548#11549#0" expanded="true" />
-            <element signature="e#11589#11590#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1257#1258#0" expanded="false" />
+            <element signature="e#1296#1297#0" expanded="false" />
+            <element signature="e#1478#1479#0" expanded="false" />
+            <element signature="e#1505#1506#0" expanded="false" />
+            <element signature="e#8877#8878#0" expanded="false" />
+            <element signature="e#8909#8910#0" expanded="false" />
+            <element signature="e#9101#9102#0" expanded="false" />
+            <element signature="e#9133#9134#0" expanded="false" />
+            <element signature="e#11010#11011#0" expanded="false" />
+            <element signature="e#11042#11043#0" expanded="false" />
+            <element signature="e#11078#11079#0" expanded="false" />
+            <element signature="e#11110#11111#0" expanded="false" />
+            <element signature="e#11161#11162#0" expanded="false" />
+            <element signature="e#11206#11207#0" expanded="false" />
+            <element signature="e#11459#11460#0" expanded="false" />
+            <element signature="e#11500#11501#0" expanded="false" />
+            <element signature="e#11548#11549#0" expanded="false" />
+            <element signature="e#11589#11590#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2441,6 +1906,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/00_Caesar/src/task0/Caesar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="261" column="25" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jCrypt/jCrypt.jar!/de/tubs/cs/iti/jcrypt/chiffre/Launcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3055">
+          <caret line="524" column="0" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JUnit/src/TestCaesar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JUnit/src/TestHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#3846#3847#0" expanded="true" />
+            <element signature="e#3887#3888#0" expanded="true" />
+            <element signature="e#3919#3920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -2494,7 +2001,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Krypto Umgebung Protokoll</last-edited>
+          <last-edited>JUnit</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
